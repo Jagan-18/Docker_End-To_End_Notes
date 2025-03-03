@@ -102,9 +102,16 @@ The Docker Lifecycle refers to the stages a Docker container goes through from c
      # -d: Runs the container in detached mode (in the background)
      ```
 3. **docker push:**  -> push the container image to public/private regestries to share the docker images.
-  ```bash
-   docker pause <container-name>
-  ```
+        ```bash
+         docker pause <container-name>
+        ```
+4. **docker ps:** Lists all running containers.
+5. **docker exec:** Executes a command inside a running container. Commonly used to interact with the container's environment.
+        ```bash
+         docker exec -it <container-name> <command>
+         # -it: Interactive terminal for running commands in the container.
+        ```
+---
 . 
    
 
