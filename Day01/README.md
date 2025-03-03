@@ -58,8 +58,8 @@ In simple words, you can understand as `containerization is a concept or technol
 ---
 ![image](https://user-images.githubusercontent.com/43399466/217507877-212d3a60-143a-4a1d-ab79-4bb615cb4622.png)
 
-The above picture, clearly indicates that Docker Deamon is brain of Docker. If Docker Deamon is killed, stops working for some reasons, Docker is brain dead :p (sarcasm intended).
-Docker follows a client-server architecture, where the Docker Client communicates with the Docker Daemon to manage containers. Here’s the flow:
+#### The above picture, clearly indicates that Docker Deamon is brain of Docker. If Docker Deamon is killed, stops working for some reasons, Docker is brain dead :p (sarcasm intended).
+####  Docker follows a client-server architecture, where the Docker Client communicates with the Docker Daemon to manage containers. Here’s the flow:
 ## Key Components of Docker Architecture:
 #### 1.Docker Client:
 - The Docker client is used to interact with the Docker daemon (server). Commands like docker build, docker run, and docker pull are sent via the Docker client.
