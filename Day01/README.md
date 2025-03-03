@@ -59,18 +59,33 @@ In simple words, you can understand as `containerization is a concept or technol
 ![image](https://user-images.githubusercontent.com/43399466/217507877-212d3a60-143a-4a1d-ab79-4bb615cb4622.png)
 
 The above picture, clearly indicates that Docker Deamon is brain of Docker. If Docker Deamon is killed, stops working for some reasons, Docker is brain dead :p (sarcasm intended).
-
+Docker follows a client-server architecture, where the Docker Client communicates with the Docker Daemon to manage containers. Here’s the flow:
+## Key Components of Docker Architecture:
 #### 1.Docker Client:
-- The Docker client is like the command center for Docker. It’s where you type in commands to tell Docker what to do.  You use the Docker client to build, run, and manage Docker containers. It talks to the Docker daemon, which does the actual work.
-- **Example commands:** docker build, docker run, docker pull.
+- The Docker client is used to interact with the Docker daemon (server). Commands like docker build, docker run, and docker pull are sent via the Docker client.
+- **Example:** When you type a command like docker run <image-name>, the client sends the request to the Docker Daemon.
 
-### Docker Hub
-- Docker Hub is an online service where you can find and store Docker images.  It’s like an app store but for Docker images. You can download (“pull”) images others have created, or upload (“push”) your own images.
-- **Usage:** When you need an image to create a container, you can pull it from Docker Hub.
+#### 2.Docker Daemon (Docker Engine):
+- The Docker Daemon is the heart of Docker. It runs in the background and manages Docker containers, images, networks, and volumes.
+- The daemon listens for requests from the Docker client and performs the required actions.
+- **Example**: When the client requests to start a container, the daemon creates and starts the container.
+
+### Docker Images:
+- A Docker Image is a template that contains the application code and everything needed to run it (libraries, dependencies, etc.).
+- It’s read-only and immutable.
+- **Example:** You can use an image like ubuntu to run a container with Ubuntu's environment.
   
-#### Docker Registry
- -  A Docker registry is a place to store Docker images. Docker Hub is the most popular public registry, but you can also have private registries. Registries store the images you create and make them available for you to pull and run on your Docker client. Private registries are used for images you don’t want to share publicly.
-Example: Companies often use private registries to store their internal application images securely.
+#### Docker Containers:
+- A Docker Container is a running instance of an image. It’s a lightweight, isolated environment where your application runs.
+- **Example:** When you run docker run <image-name>, a new container is created from the specified image and started.
+
+#### Docker Hub:
+- Docker Hub is an online public registry where you can find, store, and share Docker images. It’s similar to an "app store" but specifically for Docker images.
+- Usage: You can pull images from Docker Hub to create containers, or push your own images to Docker Hub to share with others.
+
+#### Docker Registry:
+- A Docker Registry is a place where Docker images are stored. Docker Hub is the most common public registry, but you can also set up private registries.
+- **Example:** You can pull images from Docker Hub using docker pull <image-name> or push your custom images to a registry using docker push <image-name>.
 
 ---
 
