@@ -1,4 +1,3 @@
----
 **Interviewer:** "How do you check Docker container logs, particularly the `json.log` files?"
 
 To check Docker container logs, especially the `json.log` files, I typically follow these steps:
