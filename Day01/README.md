@@ -26,10 +26,22 @@ CRI-O
 ![Screenshot 2023-02-07 at 7 18 10 PM](https://user-images.githubusercontent.com/43399466/217262726-7cabcb5b-074d-45cc-950e-84f7119e7162.png)
 
 ![image](https://github.com/saikiranpi/Mastering-Docker/assets/109568252/980faa67-603b-46d5-bb0b-83d40a22de08)
+---
+Containers and virtual machines are both technologies used to isolate applications and their dependencies, but they have some key differences:
+  **1.Resource Utilization:**
+        - Containers share the host operating system kernel, making them lighter and faster than VMs.
+        - VMs have a full-fledged OS and hypervisor, making them more resource-intensive.
+ 
+   **2.Portability:**
+          - Containers are designed to be portable and can run on any system with a compatible host operating system.
+          - VMs are less portable as they need a compatible hypervisor to run.
+   **3.Security: **
+          - VMs provide a higher level of security as each VM has its own operating system and can be isolated from the host and other VMs.
+          - Containers provide less isolation, as they share the host operating system.
+  **4.Management:**
+         - Managing containers is typically easier than managing VMs, 
+          - As containers are designed to be lightweight and fast-moving.
 
-Virtual Machines (VMs) are like having a complete, separate computer within your computer. Each VM runs its own full operating system, like having another Windows or Linux inside your main system. Because they need to load an entire OS, VMs are big and take a while to start. They are very isolated from each other, making them secure, as each VM operates independently without knowing about the others.
-
-Containers, on the other hand, are like small, self-contained environments inside your computer. They share the main computer’s operating system but have their own space for running applications. Containers are much smaller and start very quickly since they don’t need a full OS. They offer enough isolation to keep applications separate but are less isolated than VMs because they share the same OS.
 
 ----
 
