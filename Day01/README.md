@@ -94,22 +94,22 @@ The Docker Lifecycle refers to the stages a Docker container goes through from c
 1. **docker build:** Builds Docker images from a Dockerfile. This image is a snapshot of the application, its dependencies, and environment configuration.
    ```bash
    docker build -t <image-name> .
-   ```
+  ```
 2. **docker run:** runs container from docker images (OR) Creates and starts a container from a Docker image. If the image doesn't exist locally, Docker will automatically pull it from the registry.
-     ```bash
+    ```bash
      docker run -d --name <container-name> <image-name>
      # -d: Runs the container in detached mode (in the background)
-     ```
+    ```
 3. **docker push:**  -> push the container image to public/private regestries to share the docker images.
-        ```bash
-         docker pause <container-name>
-        ```
+  ```bash
+     docker pause <container-name>
+   ```
 4. **docker ps:** Lists all running containers.
 5. **docker exec:** Executes a command inside a running container. Commonly used to interact with the container's environment.
-        ```bash
+    ```bash
          docker exec -it <container-name> <command>
          # -it: Interactive terminal for running commands in the container.
-       ```
+    ```
 ---
 ---
 # Installing Docker & Network changes 
