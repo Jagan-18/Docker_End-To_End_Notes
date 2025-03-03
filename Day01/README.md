@@ -60,6 +60,7 @@ In simple words, you can understand as `containerization is a concept or technol
 
 #### The above picture, clearly indicates that Docker Deamon is brain of Docker. If Docker Deamon is killed, stops working for some reasons, Docker is brain dead :p (sarcasm intended).
 ####  Docker follows a client-server architecture, where the Docker Client communicates with the Docker Daemon to manage containers. Here’s the flow:
+
 ## Key Components of Docker Architecture:
 #### 1.Docker Client:
 - The Docker client is used to interact with the Docker daemon (server). Commands like docker build, docker run, and docker pull are sent via the Docker client.
@@ -70,20 +71,16 @@ In simple words, you can understand as `containerization is a concept or technol
 - The daemon listens for requests from the Docker client and performs the required actions.
 - **Example**: When the client requests to start a container, the daemon creates and starts the container.
 
-### Docker Images:
+#### 3.Docker Images:
 - A Docker Image is a template that contains the application code and everything needed to run it (libraries, dependencies, etc.).
 - It’s read-only and immutable.
 - **Example:** You can use an image like ubuntu to run a container with Ubuntu's environment.
   
-#### Docker Containers:
+#### 4.Docker Containers:
 - A Docker Container is a running instance of an image. It’s a lightweight, isolated environment where your application runs.
 - **Example:** When you run docker run <image-name>, a new container is created from the specified image and started.
 
-#### Docker Hub:
-- Docker Hub is an online public registry where you can find, store, and share Docker images. It’s similar to an "app store" but specifically for Docker images.
-- Usage: You can pull images from Docker Hub to create containers, or push your own images to Docker Hub to share with others.
-
-#### Docker Registry:
+#### 5.Docker Registry:
 - A Docker Registry is a place where Docker images are stored. Docker Hub is the most common public registry, but you can also set up private registries.
 - **Example:** You can pull images from Docker Hub using docker pull <image-name> or push your custom images to a registry using docker push <image-name>.
 
