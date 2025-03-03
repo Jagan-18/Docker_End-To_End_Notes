@@ -105,8 +105,7 @@ The Docker Lifecycle refers to the stages a Docker container goes through from c
   ```bash
    docker pause <container-name>
   ```
- ---
-5. 
+. 
    
 
 
