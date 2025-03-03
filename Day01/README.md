@@ -46,23 +46,33 @@ Containers and virtual machines are both technologies used to isolate applicatio
 
 
 ----
+### What is Docker ?
+
+Docker is a containerization platform that provides easy way to containerize your applications, which means, using Docker you can build container images, run the images to create containers and also push these containers to container regestries such as DockerHub, Quay.io and so on.
+
+In simple words, you can understand as `containerization is a concept or technology` and `Docker Implements Containerization`.
 
 # Docker Architecture 
 
 ![image](https://github.com/saikiranpi/Mastering-Docker/assets/109568252/c3b01248-cf68-49d0-86eb-3aea429b986d)
+---
+![image](https://user-images.githubusercontent.com/43399466/217507877-212d3a60-143a-4a1d-ab79-4bb615cb4622.png)
 
-Docker Client
-What it is: The Docker client is like the command center for Docker. It’s where you type in commands to tell Docker what to do.
-How it works: You use the Docker client to build, run, and manage Docker containers. It talks to the Docker daemon, which does the actual work.
-Example commands: docker build, docker run, docker pull.
-Docker Hub
-What it is: Docker Hub is an online service where you can find and store Docker images.
-How it works: It’s like an app store but for Docker images. You can download (“pull”) images others have created, or upload (“push”) your own images.
-Usage: When you need an image to create a container, you can pull it from Docker Hub.
-Docker Registry
-What it is: A Docker registry is a place to store Docker images. Docker Hub is the most popular public registry, but you can also have private registries.
-How it works: Registries store the images you create and make them available for you to pull and run on your Docker client. Private registries are used for images you don’t want to share publicly.
+The above picture, clearly indicates that Docker Deamon is brain of Docker. If Docker Deamon is killed, stops working for some reasons, Docker is brain dead :p (sarcasm intended).
+
+#### 1.Docker Client:
+- The Docker client is like the command center for Docker. It’s where you type in commands to tell Docker what to do.  You use the Docker client to build, run, and manage Docker containers. It talks to the Docker daemon, which does the actual work.
+- **Example commands:** docker build, docker run, docker pull.
+
+### Docker Hub
+- Docker Hub is an online service where you can find and store Docker images.  It’s like an app store but for Docker images. You can download (“pull”) images others have created, or upload (“push”) your own images.
+- **Usage:** When you need an image to create a container, you can pull it from Docker Hub.
+  
+#### Docker Registry
+ -  A Docker registry is a place to store Docker images. Docker Hub is the most popular public registry, but you can also have private registries. Registries store the images you create and make them available for you to pull and run on your Docker client. Private registries are used for images you don’t want to share publicly.
 Example: Companies often use private registries to store their internal application images securely.
+
+---
 
 # Installing Docker & Network changes 
 
