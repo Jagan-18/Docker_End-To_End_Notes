@@ -85,7 +85,25 @@ In simple words, you can understand as `containerization is a concept or technol
 - **Example:** You can pull images from Docker Hub using docker pull <image-name> or push your custom images to a registry using docker push <image-name>.
 
 ---
+===
+### Docker LifeCycle:
+![Screenshot 2023-02-08 at 4 32 13 PM](https://user-images.githubusercontent.com/43399466/217511949-81f897b2-70ee-41d1-b229-38d0572c54c7.png)
 
+The Docker Lifecycle refers to the stages a Docker container goes through from creation to termination. These stages involve building images, running containers, managing containers, and finally, cleaning them up
+
+There are three important things,
+
+1. **docker build** ---> builds docker images from Dockerfile
+   ```bash
+   docker build -t <image-name> .
+   ```
+3. docker run   -> runs container from docker images
+4. docker push  -> push the container image to public/private regestries to share the docker images.
+
+
+
+
+---
 # Installing Docker & Network changes 
 
 curl https://get.docker.com/ | bash 
