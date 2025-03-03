@@ -1,12 +1,12 @@
 
 
-Hardware Components:
-CPU: Central Processing Unit, the brain of the computer.
-RAM: Random Access Memory, temporary storage for data being used.
-HD: Hard Drive, permanent storage for data.
-Graphic Cards: Hardware for rendering images and video.
+**Hardware Components:**
+- **CPU:** Central Processing Unit, the brain of the computer.
+- **RAM:** Random Access Memory, temporary storage for data being used.
+- **HD:** Hard Drive, permanent storage for data.
+- **Graphic Cards:** Hardware for rendering images and video.
 
-Software Components:
+**Software Components:**
 Operating System: The main software that manages hardware and software resources.
 Applications: Software you use, such as Zen Recorder for recording videos or games.
 
