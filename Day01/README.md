@@ -97,10 +97,10 @@ The Docker Lifecycle refers to the stages a Docker container goes through from c
   ```
 
 2. **docker run:** runs container from docker images (OR) Creates and starts a container from a Docker image. If the image doesn't exist locally, Docker will automatically pull it from the registry.
-   ```bash
+     ```bash
      docker run -d --name <container-name> <image-name>
      # -d: Runs the container in detached mode (in the background)
-  ```
+    ```
 
 3. **docker push:**  -> push the container image to public/private regestries to share the docker images.
   ```bash
