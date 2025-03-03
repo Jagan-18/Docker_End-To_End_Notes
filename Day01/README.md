@@ -91,14 +91,23 @@ In simple words, you can understand as `containerization is a concept or technol
 
 The Docker Lifecycle refers to the stages a Docker container goes through from creation to termination. These stages involve building images, running containers, managing containers, and finally, cleaning them up
 
-There are three important things,
 
-1. **docker build** ---> builds docker images from Dockerfile
+1. **docker build:** Builds Docker images from a Dockerfile. This image is a snapshot of the application, its dependencies, and environment configuration.
    ```bash
    docker build -t <image-name> .
    ```
-3. docker run   -> runs container from docker images
-4. docker push  -> push the container image to public/private regestries to share the docker images.
+2. **docker run:** runs container from docker images (OR) Creates and starts a container from a Docker image. If the image doesn't exist locally, Docker will automatically pull it from the registry.
+     ```bash
+     docker run -d --name <container-name> <image-name>
+     # -d: Runs the container in detached mode (in the background)
+     ```
+3. **docker push:**  -> push the container image to public/private regestries to share the docker images.
+  ```bash
+   docker pause <container-name>
+  ```
+ ---
+5. 
+   
 
 
 
