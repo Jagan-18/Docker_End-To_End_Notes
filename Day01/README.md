@@ -272,10 +272,10 @@ Hello from Docker!
 This message shows that your installation appears to be working correctly.
 ...
 ...
+...
 ---
-
-
-# Listing namespaces & Running basic docker commands 
+---
+## Listing namespaces & Running basic docker commands
 
 Basic Docker Commands
 
@@ -302,6 +302,9 @@ Inspect a container: docker inspect app1
 Port forwarding: docker run --rm -d --name app1 -p 8000:80 nginx:latest
 
 View logs: docker logs app1 -f
+
+---
+
 
 
    
