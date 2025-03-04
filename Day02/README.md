@@ -61,7 +61,117 @@ Paste Like below
    
 **4.Click "Attach":**
  - Click the Attach button to attach the EBS volume to your EC2 instance.
+---
+**Attach the EBS Volume to an EC2 Instance**:
+   - Once the EBS volume is created, you can attach it to your EC2 instance. In the console, navigate to **Volumes**, select the volume, and click **Attach Volume**. Select the EC2 instance to attach to and choose the appropriate device name (e.g., `/dev/xvdf`).
 
+3. **SSH into the EC2 Instance**:
+   - SSH into the EC2 instance to which the volume is attached:
+     ```bash
+     ssh -i /path/to/your-key.pem ec2-user@<your-instance-public-ip>
+     ```
+---
+4. **Check the Attached Volume**:
+   - After attaching the volume, check if it is visible on the instance using the `lsblk` command:
+     ```bash
+     lsblk
+     ```
+     - You should see a new disk (`/dev/xvdf` or whatever device name you used) that is unformatted.
+---
+5. **Partition the Volume** (if it's a new volume):
+   - Use `fdisk` to partition the volume:
+     ```bash
+     sudo fdisk /dev/xvdf
+     ```
+   - Follow these steps in `fdisk`:
+     - **n**: Create a new partition.
+     - **p**: Select primary partition.
+     - **w**: Write the partition to disk.
+
+   After this, your volume should now be partitioned (e.g., `/dev/xvdf1`).
+
+   - You can check the partition by running `lsblk` again:
+     ```bash
+     lsblk
+     ```
+---
+6. **Format the New Partition**:
+   - Format the partition with the `ext4` filesystem:
+     ```bash
+     sudo mkfs.ext4 /dev/xvdf1
+     ```
+---
+7. **Get the UUID of the New Volume**:
+   - Find the UUID of the partition so that it can be added to `/etc/fstab` for automatic mounting:
+     ```bash
+     sudo blkid /dev/xvdf1
+     ```
+   - This will return output similar to:
+     ```bash
+     /dev/xvdf1: UUID="your-uuid-here" TYPE="ext4"
+     ```
+   - Copy the UUID, as you'll need it for the next step.
+---
+8. **Create a Mount Point**:
+   - Create a directory where you want to mount the volume (for example, `/dockerdata`):
+     ```bash
+     sudo mkdir /dockerdata
+     ```
+---
+9. **Mount the Volume**:
+   - Mount the volume to the directory you just created:
+     ```bash
+     sudo mount /dev/xvdf1 /dockerdata
+     ```
+---
+10. **Edit `/etc/fstab` for Automatic Mounting**:
+    - Open the `/etc/fstab` file to add the entry for automatic mounting on reboot:
+      ```bash
+      sudo nano /etc/fstab
+      ```
+    - Add the following line to the end of the file (replace `your-uuid-here` with the UUID you copied earlier):
+      ```bash
+      UUID=your-uuid-here /dockerdata ext4 defaults,nofail 0 0
+      ```
+    - Save and exit the editor (in `nano`, press `CTRL+X`, then press `Y` to confirm, and `Enter` to save).
+---
+11. **Verify the Mount**:
+    - Verify that the volume is mounted correctly by running:
+      ```bash
+      df -h
+      ```
+    - You should see the newly mounted volume at `/dockerdata`.
+---
+### **Summary of Key Commands**
+
+1. **Partitioning the volume**:
+   ```bash
+   sudo fdisk /dev/xvdf
+   # Then in fdisk:
+   # n > p > w
+   ```
+
+2. **Formatting the partition**:
+   ```bash
+   sudo mkfs.ext4 /dev/xvdf1
+   ```
+
+3. **Getting the UUID**:
+   ```bash
+   sudo blkid /dev/xvdf1
+   ```
+
+4. **Creating a mount point**:
+   ```bash
+   sudo mkdir /dockerdata
+   ```
+
+5. **Editing `/etc/fstab` for automatic mount**:
+   ```bash
+   sudo nano /etc/fstab
+   # Add the line:
+   UUID=your-uuid-here /dockerdata ext4 defaults,nofail 0 0
+   ```
 ---
 ![image](https://github.com/saikiranpi/Mastering-Docker/assets/109568252/1ad08bf8-593e-4579-921c-0f7d8938c8ee)
 ---
