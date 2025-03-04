@@ -25,24 +25,59 @@ nano /etc/fstab
 Paste Like below
 
 ![image](https://github.com/saikiranpi/Mastering-Docker/assets/109568252/1ad08bf8-593e-4579-921c-0f7d8938c8ee)
+---
+### Why We Need a Custom Network for Containers
+1. **Default Network Limitations:**
+   - In Docker's default bridge network, containers can communicate with each other using IP addresses but **not by container names**.
+   - This makes it more difficult to manage communication between containers, especially when you need to reference them by names rather than IPs.
 
-# Why We Need a Custom Network for Containers
+2. **Solution: Custom Network**
+   - To allow containers to communicate using their **names**, we need to create a **custom network**.
+   - Docker provides the `--network` flag to specify the network when running containers.
 
-With the default bridge network, containers can communicate with each other using IP addresses but not with container names. To enable communication using container names, we need to create a custom network.
+---
+### Steps to Create and Use a Custom Network:
 
-First create a customer network 
+#### 1. **Create a Custom Network**:
+   - Use the following command to create a custom network:
+     ```bash
+     docker network create myapp --driver bridge
+     ```
+     - This creates a network called `myapp` using the `bridge` driver, which is the default networking mode for Docker.
 
-Docker network create myapp --driver bridge
+#### 2. **Inspect the Custom Network**:
+   - To verify and inspect the details of the custom network you just created:
+     ```bash
+     docker network inspect myapp
+     ```
+     - This command will show details such as connected containers, network settings, and more.
 
-Docker network inspect myapp
+#### 3. **Run Containers on the Custom Network**:
+   - When running containers, you can attach them to the custom network using the `--network` flag:
+     ```bash
+     docker run --rm -d --name app3 -p 8001:80 --network myapp kiran2361993:troubleshootingtools:v1
+     docker run --rm -d --name app4 -p 8002:80 --network myapp kiran2361993:troubleshootingtools:v1
+     ```
+     - The `--rm` flag removes the container when it stops.
+     - The `--name` option assigns a name to each container, which is important for communication.
+     - The `-p` flag maps the container's internal port (`80`) to the host machine's port (`8001` and `8002` respectively).
+     - Both containers will be attached to the custom `myapp` network.
 
-Now run containers with including the custom network
+#### 4. **Verify Communication Between Containers Using Names**:
+   - After running the containers, you can log into one of the containers using:
+     ```bash
+     docker exec -it app3 bash
+     ```
+     - This will open an interactive shell inside the container `app3`.
 
-docker run –rm -d –name app3 -p 8001 –network myapp  kiran2361993:troubleshootingtools:v1
+   - From within the container, you can now **ping** the other container using its **name**:
+     ```bash
+     ping app4
+     ```
+     - Since both containers are on the same custom network (`myapp`), they will be able to communicate with each other by container names, not just IPs.
 
-docker run –rm -d –name app4 -p 8002 –network myapp  kiran2361993:troubleshootingtools:v1
+---
 
-If you login to the container with docker exec -it containername bash and you can ping with the container name instead of IP, It should work. 
 
 # Using the HOST Network Mode
 
