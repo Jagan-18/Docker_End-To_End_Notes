@@ -49,18 +49,15 @@ Paste Like below
 ---
 # 2.Attach the EBS Volume to an EC2 Instance
 1. Select the Created Volume:
-- In the Volumes section, select the volume you just created from the list.
-  
+ - In the Volumes section, select the volume you just created from the list. 
 2. Click "Actions" and Select "Attach Volume":
-- Click on the Actions button and choose Attach Volume.
-  
+ - Click on the Actions button and choose Attach Volume.
 3. Choose the EC2 Instance:
-- In the Attach Volume dialog box, you will need to select the EC2 instance that you want to attach the volume to.
-- Instance ID: Select the instance from the dropdown list.
-- Device Name: AWS will automatically suggest a device name (e.g., /dev/sdf), but you can modify it if needed.
-  
+ - In the Attach Volume dialog box, you will need to select the EC2 instance that you want to attach the volume to.
+ - Instance ID: Select the instance from the dropdown list.
+ - Device Name: AWS will automatically suggest a device name (e.g., /dev/sdf), but you can modify it if needed.
 4.Click "Attach":
-- Click the Attach button to attach the EBS volume to your EC2 instance.
+ - Click the Attach button to attach the EBS volume to your EC2 instance.
 
 ---
 ![image](https://github.com/saikiranpi/Mastering-Docker/assets/109568252/1ad08bf8-593e-4579-921c-0f7d8938c8ee)
