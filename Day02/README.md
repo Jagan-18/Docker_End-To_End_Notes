@@ -31,32 +31,35 @@ Paste Like below
 1.Log into the AWS Management Console:
  - Navigate to the EC2 Dashboard in the AWS Management Console.
   
-2.Go to the "Volumes" Section:
+**2.Go to the "Volumes" Section:**
  - On the left sidebar, under Elastic Block Store, click on Volumes.
 
-3. Click "Create Volume":
+**3. Click "Create Volume":**
  - Click the Create Volume button at the top of the page.
   
-4. Configure the Volume:
+**4. Configure the Volume:**
  - **Volume Type:** Choose a volume type (e.g., General Purpose SSD (gp3), Provisioned IOPS SSD (io1), or Magnetic).
  - **Size:**  Specify the size of the volume (in GiB).
  - **Availability Zone:**  Select the same Availability Zone (AZ) as your EC2 instance to which you want to attach the volume. If your EC2 instance is in us-west-2a, select the same AZ for the EBS volume.
  - **Snapshot** : Optionally, you can create the volume from an existing snapshot if needed.
  - **Encryption:**  You can enable encryption for the volume, if required.
   
-5.Click "Create Volume":
+**5.Click "Create Volume":**
  - After configuring the volume, click the Create Volume button. This will create the EBS volume in the specified AZ.
 ---
 # 2.Attach the EBS Volume to an EC2 Instance
-1. Select the Created Volume:
- - In the Volumes section, select the volume you just created from the list. 
-2. Click "Actions" and Select "Attach Volume":
+**1. Select the Created Volume:**
+ - In the Volumes section, select the volume you just created from the list.
+   
+**2. Click "Actions" and Select "Attach Volume":**
  - Click on the Actions button and choose Attach Volume.
-3. Choose the EC2 Instance:
+   
+**3. Choose the EC2 Instance:**
  - In the Attach Volume dialog box, you will need to select the EC2 instance that you want to attach the volume to.
  - Instance ID: Select the instance from the dropdown list.
  - Device Name: AWS will automatically suggest a device name (e.g., /dev/sdf), but you can modify it if needed.
-4.Click "Attach":
+   
+**4.Click "Attach":**
  - Click the Attach button to attach the EBS volume to your EC2 instance.
 
 ---
