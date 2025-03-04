@@ -28,24 +28,24 @@ Paste Like below
 # Steps to Create an EBS Volume and Attach It to an EC2 Instance
 ---
 **1. Create an EBS Volume:**
-1. Log into the AWS Management Console:
-- Navigate to the EC2 Dashboard in the AWS Management Console.
+ 1.Log into the AWS Management Console:
+ - Navigate to the EC2 Dashboard in the AWS Management Console.
   
-2.Go to the "Volumes" Section:
-- On the left sidebar, under Elastic Block Store, click on Volumes.
+ 2.Go to the "Volumes" Section:
+ - On the left sidebar, under Elastic Block Store, click on Volumes.
 
-3. Click "Create Volume":
-- Click the Create Volume button at the top of the page.
+ 3. Click "Create Volume":
+ - Click the Create Volume button at the top of the page.
   
-4. Configure the Volume:
-- **Volume Type:** Choose a volume type (e.g., General Purpose SSD (gp3), Provisioned IOPS SSD (io1), or Magnetic).
-- **Size:**  Specify the size of the volume (in GiB).
-- **Availability Zone:**  Select the same Availability Zone (AZ) as your EC2 instance to which you want to attach the volume. If your EC2 instance is in us-west-2a, select the same AZ for the EBS volume.
-- **Snapshot** : Optionally, you can create the volume from an existing snapshot if needed.
-- **Encryption:**  You can enable encryption for the volume, if required.
+ 4. Configure the Volume:
+ - **Volume Type:** Choose a volume type (e.g., General Purpose SSD (gp3), Provisioned IOPS SSD (io1), or Magnetic).
+ - **Size:**  Specify the size of the volume (in GiB).
+ - **Availability Zone:**  Select the same Availability Zone (AZ) as your EC2 instance to which you want to attach the volume. If your EC2 instance is in us-west-2a, select the same AZ for the EBS volume.
+ - **Snapshot** : Optionally, you can create the volume from an existing snapshot if needed.
+ - **Encryption:**  You can enable encryption for the volume, if required.
   
-5.Click "Create Volume":
-- After configuring the volume, click the Create Volume button. This will create the EBS volume in the specified AZ.
+ 5.Click "Create Volume":
+ - After configuring the volume, click the Create Volume button. This will create the EBS volume in the specified AZ.
 ---
 # 2.Attach the EBS Volume to an EC2 Instance
 1. Select the Created Volume:
