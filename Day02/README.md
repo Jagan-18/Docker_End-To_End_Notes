@@ -1,3 +1,8 @@
+# 1. Docker Default Directory change
+# 2. Attaching EBS Volume To Instance to store Docker App Data
+# 3. Custom Network for container Name Communication.
+
+---
 # Why We Need Separate Utilization for Docker Data
 - The default directory for Docker is /var/lib/docker.
 - As you continue downloading images and generating logs, this directory will consume more space and eventually get busy.
