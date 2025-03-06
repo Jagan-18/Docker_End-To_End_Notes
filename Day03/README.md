@@ -102,7 +102,7 @@ Containers are stateless by nature, meaning if a container is deleted, all data 
  ```bash
    docker run --rm -d --name mongodb -v mongodb:/data/db -p 27017:27017 mongo:latest
 ```
-- -v mongodb:/data/db: Mount the mongodb volume to /data/db inside the container, ensuring data is saved on the host machine.
+- **-v mongodb:/data/db:** Mount the mongodb volume to /data/db inside the container, ensuring data is saved on the host machine.
 
 8. **Check running containers:** Verify the MongoDB container is running with the volume:
 ```bash
