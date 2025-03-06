@@ -61,12 +61,16 @@ Containers are stateless by nature, meaning if a container is deleted, all data 
 5. **Insert some data**:
 ```bash
    docker exec -it mongodb mongosh
-```
+
    > show dbs;
+
    > Insert some data
+
    > show dbs;
+
    > db.hello.find();
 
+```
 
 6. **Stop and start the container**:
 
