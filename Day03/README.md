@@ -53,9 +53,9 @@ Containers are stateless by nature, meaning if a container is deleted, all data 
  ```bash
    docker run -rm -d --name mongodb  -p 27017:27017 mongo:latest
  ```
--  --rm: Automatically remove the container when stopped.
--  -d: Run the container in detached mode (in the background).
--  -p 27017:27017: Expose port 27017 for MongoDB.
+-  **--rm:** Automatically remove the container when stopped.
+-  **-d:** Run the container in detached mode (in the background).
+-  **-p 27017:27017:** Expose port 27017 for MongoDB.
   
 4. **Check running containers:** Verify the container is running
  ```bash
