@@ -1,7 +1,4 @@
 
-![03](https://github.com/saikiranpi/Mastering-Docker/assets/109568252/099fe856-0a3f-4b60-b093-c240d20834f1)
-
-
 ## Table of Contents
 
 1. [Introduction to Docker Containers](#introduction-to-docker-containers)
@@ -15,7 +12,7 @@
 
 ## Introduction to Docker Containers
 
-Containers are stateless by nature, meaning if a container is deleted, all data within it is lost. This is where data persistence comes into play, ensuring your data remains intact even if the container is removed. We achieve this through Volumes and Bind Mounts.
+Containers are stateless by nature, meaning if a container is deleted, all data within it is lost. This is where data persistence comes into play, ensuring your data remains intact even if the container is removed. We achieve this through **Volumes** and **Bind Mounts**.
 
 ## Understanding Data Persistence
 
@@ -30,38 +27,41 @@ Containers are stateless by nature, meaning if a container is deleted, all data 
   - Managed by Docker.
   - Stored in a part of the host filesystem which is managed by Docker.
   - Preferred method for data persistence.
+  - Portable across systems
+  - Easy to backup and restore using Docker commands
 
 - **Bind Mounts**:
   - Maps a file or directory on the host to a file or directory in the container.
   - More complex but provides flexibility to interact with the host system.
+  - Not portable (depends on host path)
+  - No built-in backup, manual intervention needed
 
 ## Practical Examples
 
 ### Using Volumes
 
 1. **List existing volumes**:
-
+```bash
    docker volume ls
-
-
+```
 2. **Create a new volume**:
-
+```bash
    docker volume create mongodb
-
-
+```
 3. **Run a MongoDB container with a volume**:
-
+ ```bash
    docker run --rm -d --name mongodb -v mongodb:/data/db -p 27017:27017 mongo:latest
-
-
+   (OR)
+   docker run -rm -d --name mongodb  -p 27017:27017 mongo:latest
+ ```
 4. **Check running containers**:
-
+ ```bash
    docker ps
-
-
+ ```
 5. **Insert some data**:
-
+```bash
    docker exec -it mongodb mongosh
+```
    > show dbs;
    > Insert some data
    > show dbs;
