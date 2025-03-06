@@ -139,19 +139,83 @@ Containers are stateless by nature, meaning if a container is deleted, all data 
 - **With volume:** Data persists even after the container stops or restarts (as shown in steps 7–10).
 ---
 
-### Using Bind Mounts
+# Using Bind Mounts in Docker, based on your example:
+---
+#### **1. Run a Container without Network Access (Using `--network none`)** 
+- we’ll run a container with no network access. This container won't be able to access any external resources, including the Docker daemon.
 
-1. **Run a container without network access**:
+#### Command:
+```bash
+docker run --rm -d --name app1 --network none kiran2361993/troubleshootingtools:v1
+```
+- **--rm**: Automatically removes the container when stopped.
+- **-d**: Runs the container in detached mode.
+- **--name app1**: Names the container `app1`.
+- **--network none**: This isolates the container from any network.
 
-   docker run --rm -d --name troubleshootingtools --network none troubleshootingtools:v10
+#### Check running containers:
+```bash
+docker ps
+```
+#### Inside the container, run Docker commands (to simulate an error):
+- Now, we access the container and try running Docker commands, which should give us an error because the container doesn't have network access to communicate with the Docker daemon.
+```bash
+docker exec -it app1 bash
+```
+- Inside the container:
+```bash
+docker ps  # This will give an error: "cannot connect to the Docker daemon at unix:///var/run/docker.sock."
+```
+#### Exit and stop the container:
+```bash
+exit
+docker stop app1
+```
+---
+### **2. Run a Container with Docker Socket Mounted:** In this step, we run a container that has access to the Docker daemon by binding the Docker socket.
 
+#### Command:
+```bash
+docker run --rm -d --name app1 -v /var/run/docker.sock:/var/run/docker.sock --network none troubleshootingtools:v1
+```
+- **-v /var/run/docker.sock:/var/run/docker.sock:** Mounts the Docker socket from the host to the container, allowing the container to communicate with the Docker daemon.
+- **--network none:** Keeps the container isolated from external networks.
 
-2. **Run a container with Docker socket mounted**:
+#### Check running containers:
+```bash
+docker ps
+```
+#### Inside the container, run Docker commands (now we can see the container details):
+```bash
+docker exec -it app1 bash
+```
+- Inside the container:
+```bash
+docker ps  # Now, this command should list containers because the container has access to the Docker daemon
+docker images  # Lists images available on the host
+```
 
-   docker run --rm -d --name troubleshootingtools -v /var/run/docker.sock:/var/run/docker.sock --network none troubleshootingtools:v10
+#### Inspect the container:
+- Although the container can access the Docker daemon, it cannot retrieve the container's IP address because the container is isolated from networks.
+```bash
+docker inspect app1  # We can't see any IP address for our container, as it's on a "none" network.
+```
+#### Exit the container:
+```bash
+exit
+```
+---
 
+### **Key Concepts:**
+1. **Without Network Access (`--network none`)**:
+   - The container has no network access, and Docker commands inside the container fail because it can't access the Docker daemon or the network.
 
-3. **Inspect the container**:
+2. **With Docker Socket Mounted**:
+   - By mounting the Docker socket (`/var/run/docker.sock`), the container can communicate with the Docker daemon, allowing it to interact with other containers and list images, containers, etc.
+   - However, despite having Docker access, the container won’t have any networking information (like IP addresses) if it’s isolated on a "none" network.
+---
+
+4. **Inspect the container**:
 
    docker inspect troubleshootingtools
 
