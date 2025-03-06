@@ -1,8 +1,3 @@
-
-
-<img width="960" alt="04" src="https://github.com/saikiranpi/Mastering-Docker/assets/109568252/a002e620-a69a-4565-8086-33bd1ac0351f">
-
-
 # Docker File part 01
 
 This repository contains a Dockerfile for setting up an environment with Terraform and Packer on an Ubuntu base image. Below are the steps and commands used in the Dockerfile and for running the container.
@@ -108,3 +103,33 @@ docker system prune
 - **COPY**: Copies files from your host system to the image. Used for copying local files and directories.
 - **ENTRYPOINT**: Configures a container to run as an executable.
 - **WORKDIR**: Sets the working directory inside the image where subsequent commands will be run from.
+
+---
+# How to pass build parameters in Dockerfiles?"
+
+- **Build parameters or build arguments** are values that can be passed at build time in a Dockerfile.
+- These are useful for passing custom values or settings (like versions or configuration options) that can influence the Docker image being built."
+
+1.**Define and Use Build Arguments in a Dockerfile:**
+  - In a Dockerfile, build arguments are defined using the ARG instruction. You can optionally set a default value for the argument. The argument can then be used in commands like RUN, ENV, or COPY to configure the image based on that value.
+
+#### For example: Dockerfile
+```bash
+# Define build argument with a default value
+ARG MY_BUILD_ARG=default_value
+
+# Use the build argument in the Dockerfile
+RUN echo "The build argument is: $MY_BUILD_ARG"
+```
+2. **Pass Build Arguments During Build:**
+- When building the Docker image, you can pass the value of the build argument using the --build-arg flag with the docker build command. This allows you to override the default value of the argument at build time."
+
+#### For example:
+```bash
+docker build --build-arg MY_BUILD_ARG=my_custom_value -t my-image .
+```
+#### Important Notes:
+- ***Build arguments are only available during the image build process.** Once the image is built, the arguments will not be available at runtime.
+- **Arguments can have default values**, but they can be overridden by specifying the --build-arg during the build process.
+- **ARG values cannot be used in FROM instructions** in a multi-stage build unless they are defined earlier in the Dockerfile.
+---
