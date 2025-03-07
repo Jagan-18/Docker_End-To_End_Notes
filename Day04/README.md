@@ -235,3 +235,34 @@ docker image prune -a
 - **Unused images:** These are images that are not currently in use by any container (i.e., no running container is using them). They might still be tagged.
 ---
 ---
+# What is Multi-Stage Build in Docker (OR) Can you explain the concept of multi-stage builds in Docker?
+-  Multi-stage builds allow you to use multiple **FROM** statements in a single Dockerfile. Each **FROM** begins a new build stage.
+- This is especially useful for separating build-time dependencies (like compilers or testing tools) from runtime dependencies, helping you reduce the size of the final image by leaving unnecessary build tools behind.
+---
+#### How Multi-Stage Builds Work:
+1. The **first stage (build stage)** includes all the dependencies required for building the application (e.g., compilers, libraries, and other build tools).
+2. The **second stage (runtime stage)** is the final image that only includes the runtime environment needed to execute the app.
+
+- In the final image, only the files explicitly copied from the build stage will be included, leaving behind all unnecessary build tools and intermediate files.
+
+#### Example of Multi-Stage Build:
+```bash
+# Stage 1: Build Stage
+FROM node:16 AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Stage 2: Runtime Stage
+FROM node:16-slim
+WORKDIR /app
+COPY --from=builder /app/build /app
+RUN npm install --only=production
+CMD ["node", "app.js"]
+```
+- **Stage 1 (builder):** The image starts with a full Node.js image (node:16), installs dependencies, and builds the app.
+- **Stage 2 (runtime):** The final image is based on a smaller image (node:16-slim), and it only includes the built application and necessary runtime dependencies.
+This approach reduces the final image size by omitting build tools and other unnecessary files, which are only needed during the build process.
+---
