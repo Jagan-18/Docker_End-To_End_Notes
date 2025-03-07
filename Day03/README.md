@@ -24,18 +24,22 @@ Containers are stateless by nature, meaning if a container is deleted, all data 
 ## Volumes vs Bind Mounts
 
 - **Volumes**:
-  - Managed by Docker.
+  - Managed by Docker (easy backup, restore, etc.)
   - Stored in a part of the host filesystem which is managed by Docker.
   - Preferred method for data persistence.
   - Portable across systems
   - Easy to backup and restore using Docker commands
 
 - **Bind Mounts**:
+   - Managed by the user (requires manual care)
   - Maps a file or directory on the host to a file or directory in the container.
   - More complex but provides flexibility to interact with the host system.
   - Not portable (depends on host path)
   - No built-in backup, manual intervention needed
-
+    
+# Key Difference:
+- **Volumes:** Managed by Docker, and stored in Docker's default location. Recommended for persistent data.
+- **Bind Mounts:** Linked directly to a directory/file on the host system. Useful for development or sharing specific files.
 ---
 # To using Docker volumes with first run the MongoDB container without a volume and later add a volume to ensure the data persists
 
