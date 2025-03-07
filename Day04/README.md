@@ -12,6 +12,7 @@ The Dockerfile performs the following tasks:
 
 # Dockerfile Contents
 ---
+```bash
 # Use the official Ubuntu as a base image
 FROM ubuntu:latest
 
@@ -46,6 +47,7 @@ WORKDIR /usr/share/nginx/html
 
 # Command to run Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
+```
 ---
 
 ## Commands to Build and Run the Container:
