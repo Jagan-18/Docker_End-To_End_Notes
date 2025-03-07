@@ -266,3 +266,28 @@ CMD ["node", "app.js"]
 - **Stage 2 (runtime):** The final image is based on a smaller image (node:16-slim), and it only includes the built application and necessary runtime dependencies.
 This approach reduces the final image size by omitting build tools and other unnecessary files, which are only needed during the build process.
 ---
+# How can you reduce the size of your Docker image?
+- Reducing the size of a Docker image is important for efficiency, faster builds, and better deployment speeds. Here are some strategies to minimize Docker image sizes:
+  
+1. **Use a smaller base image:** Start with minimal base images like alpine instead of ubuntu or debian to keep the image lightweight.
+**Example:**
+```bash
+FROM alpine:latest
+```
+2. **Clean up unnecessary files:** After installing packages, remove cache files or temporary files to reduce the image size.
+**Example:**
+```bash
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+```
+3.**Use multi-stage builds:** In multi-stage builds, you can separate the build environment (which may need extra tools) from the final runtime environment, copying only the necessary artifacts.
+4.**Minimize layers:** Combine related commands into one RUN statement to reduce the number of layers in your image.
+
+**Example:**
+```bash
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+```
+5. **Remove unnecessary dependencies:** Avoid installing unnecessary tools or dependencies that aren’t needed in the final container.
+---
