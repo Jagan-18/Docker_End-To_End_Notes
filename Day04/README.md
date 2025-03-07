@@ -105,7 +105,7 @@ docker system prune
 - **WORKDIR**: Sets the working directory inside the image where subsequent commands will be run from.
 
 ---
-# How to pass build parameters in Dockerfiles?"
+# How to pass build parameters in Dockerfiles.?
 
 - **Build parameters or build arguments** are values that can be passed at build time in a Dockerfile.
 - These are useful for passing custom values or settings (like versions or configuration options) that can influence the Docker image being built."
@@ -132,4 +132,14 @@ docker build --build-arg MY_BUILD_ARG=my_custom_value -t my-image .
 - ***Build arguments are only available during the image build process.** Once the image is built, the arguments will not be available at runtime.
 - **Arguments can have default values**, but they can be overridden by specifying the --build-arg during the build process.
 - **ARG values cannot be used in FROM instructions** in a multi-stage build unless they are defined earlier in the Dockerfile.
+---
+---
+# what is different between environment and arguments in docker.?
+- **Build arguments (ARG)** are only passed during the **build process** and **cannot be passed when running the container**. They are only available at build time and are not accessible in the running container.
+- Can have default values, but can be overridden at build time
+- Passed using --build-arg during the build.
+---
+- **Environment variables (ENV)** are available both **during build time and runtime** and can be modified when running the container.
+- Can have default values, but can be overridden at runtime
+- Passed using -e with docker run.
 ---
