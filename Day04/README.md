@@ -281,9 +281,9 @@ FROM alpine:latest
 ```bash
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 ```
-3.**Use multi-stage builds:** In multi-stage builds, you can separate the build environment (which may need extra tools) from the final runtime environment, copying only the necessary artifacts.
+3. **Use multi-stage builds:** In multi-stage builds, you can separate the build environment (which may need extra tools) from the final runtime environment, copying only the necessary artifacts.
 
-4.**Minimize layers:** Combine related commands into one RUN statement to reduce the number of layers in your image.
+4. **Minimize layers:** Combine related commands into one RUN statement to reduce the number of layers in your image.
 
 **Example:**
 ```bash
