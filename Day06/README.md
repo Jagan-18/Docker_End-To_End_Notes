@@ -73,28 +73,8 @@ ReferURL : https://github.com/GoogleContainerTools/distroless
 3. **Improved Security:** Only the necessary artifacts are copied to the final image, leaving behind build tools or sensitive data (e.g., credentials, source code).
 
 4. **Separation of Concerns:** You can use different images (like a build image for compiling code) in different stages, and they won’t interfere with your final image.
-
+   
 ---
-### Docker Multi-Stage Builds
-
-**Docker Multi-Stage Builds** allow you to use multiple `FROM` statements in a single Dockerfile. This helps in separating the build process from the final runtime image. The primary benefit is that it lets you build the application using a larger image (with all necessary build tools) and then copy only the necessary files to a smaller, more efficient final image. This is especially useful when you want to reduce the size of your final Docker image, like when using **distroless images**.
-
-### Why Use Multi-Stage Builds?
-
-1. **Smaller Image Size**:
-   - By using a multi-stage build, you can remove unnecessary build tools and dependencies from the final image, reducing its size.
-
-2. **Cleaner Dockerfile**:
-   - Multi-stage builds allow you to handle complex workflows, like installing dependencies, building code, and packaging the app, in a clean and organized manner.
-
-3. **Improved Security**:
-   - Only the necessary artifacts are copied to the final image, leaving behind build tools or sensitive data (e.g., credentials, source code).
-
-4. **Separation of Concerns**:
-   - You can use different images (like a build image for compiling code) in different stages, and they won’t interfere with your final image.
-
----
-
 # How Does a Multi-Stage Build Work?
 - A multi-stage build uses multiple `FROM` statements. Each stage has its own base image. You can use the `COPY --from=<stage>` command to copy files from one stage to the next.
 
