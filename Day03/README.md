@@ -28,8 +28,8 @@ Containers are stateless by nature, meaning if a container is deleted, all data 
 **How Bind Mounts Work:**
 - **Host Path:** You specify an existing directory or file on the host machine.
 - **Container Path:** You specify where you want to mount that host file or directory inside the container.
-  
 - When using bind mounts, the container has direct access to the files or directories on the host, and changes made to those files are reflected immediately on both the host and the container.
+  
 **Syntax for Bind Mounts:** When using bind mounts, you can specify the mount point in the docker run command as follows:
 ```bash
 docker run -v <host_path>:<container_path> <image_name>
