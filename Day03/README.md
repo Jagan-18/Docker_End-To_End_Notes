@@ -44,6 +44,7 @@ docker run -v <host_path>:<container_path> <image_name>
 docker run -v /home/user/app:/usr/src/app myapp:latest
 ```
 - Any changes made inside /usr/src/app in the container will be reflected inside /home/user/app on the host and vice versa.
+
 **2.Mounting a file:** If you want to mount a single file, such as /home/user/config/settings.json on the host into /app/config/settings.json inside the container, you would do it like this:
 ```bash
 docker run -v /home/user/config/settings.json:/app/config/settings.json myapp:latest
