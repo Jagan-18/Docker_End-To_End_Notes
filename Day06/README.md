@@ -39,8 +39,7 @@ CMD ["app.js"]
   
 #### Summary:
 1. Distroless images are minimal and don’t include a shell.
-   
-2.The error occurs because you’re trying to use shell commands, but the image doesn’t have a shell.
+   2.The error occurs because you’re trying to use shell commands, but the image doesn’t have a shell.
 
 3. Fix it by using a 2-stage build or avoiding shell commands in your Dockerfile.
    
