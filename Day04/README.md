@@ -270,11 +270,13 @@ This approach reduces the final image size by omitting build tools and other unn
 - Reducing the size of a Docker image is important for efficiency, faster builds, and better deployment speeds. Here are some strategies to minimize Docker image sizes:
   
 1. **Use a smaller base image:** Start with minimal base images like alpine instead of ubuntu or debian to keep the image lightweight.
+   
 **Example:**
 ```bash
 FROM alpine:latest
 ```
 2. **Clean up unnecessary files:** After installing packages, remove cache files or temporary files to reduce the image size.
+   
 **Example:**
 ```bash
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
