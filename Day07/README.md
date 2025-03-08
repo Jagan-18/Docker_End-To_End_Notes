@@ -190,18 +190,11 @@ networks:
    
    ```
 
-2. **Follow the Video Tutorial**
-
-   Watch the [Docker Compose tutorial video](https://youtu.be/WV6SnFMYM1w) to learn how to:
-   - Define multi-container applications with Docker Compose
-   - Use simple commands to manage your Docker containers
-   - Scale your application services effortlessly
-   - Manage networks and volumes using Docker Compose
 
 ## Additional Resources
 
 - [Docker Compose Documentation](https://docs.docker.com/compose/)
-- [Mastering Cloud YouTube Channel](https://www.youtube.com/channel/UCXXXXXXX) for more Docker and DevOps tutorials
+
 
 
 
