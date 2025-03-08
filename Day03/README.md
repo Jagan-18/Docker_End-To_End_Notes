@@ -24,6 +24,7 @@ Containers are stateless by nature, meaning if a container is deleted, all data 
 # What are Bind Mounts in Docker?
 - A bind mount in Docker is a way to link a specific file or directory on your host machine to a file or directory in a Docker container.
 -  This allows you to share files between the host and the container in a way that changes made to the file on either side will reflect on the other side.
+
 **How Bind Mounts Work:**
 - **Host Path:** You specify an existing directory or file on the host machine.
 - **Container Path:** You specify where you want to mount that host file or directory inside the container.
