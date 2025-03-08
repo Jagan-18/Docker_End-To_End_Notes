@@ -4,6 +4,7 @@
 - Distroless images are Docker images that only contain your application and the libraries it needs to run.
 - They do not include extra tools like a **package manager or shell.** This makes the images smaller and more secure.
 - Distroless images provide a more secure, efficient, and lightweight way to run your applications in production.
+  
 ---
 **Why does the issue happen?** 
 - Distroless images are very minimal, so they don't have a shell or other utilities like **mkdir or sh** that you might need in a regular Dockerfile.
@@ -37,15 +38,16 @@ CMD ["app.js"]
 - The second part uses the distroless image with only your app.
   
 #### Summary:
-
 1. Distroless images are minimal and don’t include a shell.
    
 2.The error occurs because you’re trying to use shell commands, but the image doesn’t have a shell.
 
 3. Fix it by using a 2-stage build or avoiding shell commands in your Dockerfile.
+   
 ---
 **Why Use Distroless Images?**
 1. **Reduced Attack Surface:**  Since Distroless images contain only your application and its dependencies, they eliminate unnecessary tools and libraries that could be exploited by attackers.
+   
 2.**Smaller Image Size:** By excluding unnecessary components, Distroless images are significantly smaller in size compared to traditional Linux distribution-based images. This results in faster image pulls and reduced storage costs.
 
 ReferURL : https://github.com/GoogleContainerTools/distroless
