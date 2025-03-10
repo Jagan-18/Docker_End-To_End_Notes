@@ -78,20 +78,13 @@ While **Docker Swarm** and **Kubernetes** both offer container orchestration fea
 
 1. **Limited Features**: Lacks advanced features like autoscaling, pod scheduling, and multi-cloud support, unlike Kubernetes.
 2. **Basic Networking**: Less complex networking options compared to Kubernetes (e.g., ingress controllers, service meshes).
-3. . **Less Resource Control**: Limited options for resource allocation (CPU/Memory limits).
-
-7. **Stateful Application Management**: Lacks native support for managing stateful applications (e.g., persistent volumes).
-   
-8. **Minimal UI**: Basic UI compared to Kubernetes' more advanced management tools.
-   
-10. **Scaling Limits**: May not scale as efficiently as Kubernetes for large applications.
- 
-12. **Fewer Integrations**: Limited third-party integrations for monitoring, logging, and CI/CD.
-
-13. **Upgrade Challenges**: Updating and managing large clusters can be more difficult than in Kubernetes.
-
-
-
+3. **Less Resource Control**: Limited options for resource allocation (CPU/Memory limits).
+4. **Stateful Application Management**: Lacks native support for managing stateful applications (e.g., persistent volumes).
+5. **Minimal UI**: Basic UI compared to Kubernetes' more advanced management tools.
+6. **Scaling Limits**: May not scale as efficiently as Kubernetes for large applications.
+7. **Fewer Integrations**: Limited third-party integrations for monitoring, logging, and CI/CD.
+8. **Upgrade Challenges**: Updating and managing large clusters can be more difficult than in Kubernetes.
+---
 ---
 # How to Set Up Docker Swarm
 
