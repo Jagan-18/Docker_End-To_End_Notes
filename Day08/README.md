@@ -197,6 +197,11 @@ Use Swarm Visualizer from GitHub to visualize your cluster. Access the visualize
 ```bash
 docker run -it -d -p 8080:8080 --name swarm-visualizer -e HOST=<manager-ip> -e PORT=<manager-port> dockersamples/visualizer
 ```
+--
+# Docker Swarm Routing Mesh
+- Docker Swarm Routing Mesh is a feature of Docker Swarm mode that **enables service discovery** and **load balancing across the nodes in a Swarm cluster**. It allows clients to access services exposed via a published port on any node in the Swarm, regardless of which node the service container is running on.
+
+The routing mesh ensures that incoming traffic is correctly routed to the appropriate service containers, even if those containers are running on different nodes within the Swarm cluster.
 ---
 ### **Conclusion**
 
