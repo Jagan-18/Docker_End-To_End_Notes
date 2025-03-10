@@ -73,6 +73,24 @@ While **Docker Swarm** and **Kubernetes** both offer container orchestration fea
 3. **High availability**: It ensures that services are available even when nodes fail.
 4. **Easy setup**: Docker Swarm can be set up with just a few commands, and you can easily convert a regular Docker host into a swarm node.
 5. **Docker integration**: As part of the Docker ecosystem, Swarm integrates seamlessly with Docker CLI and Docker Compose.
+---
+**Disadvantages of Docker Swarm**:
+
+1. **Limited Features**: Lacks advanced features like autoscaling, pod scheduling, and multi-cloud support, unlike Kubernetes.
+2. **Basic Networking**: Less complex networking options compared to Kubernetes (e.g., ingress controllers, service meshes).
+3. . **Less Resource Control**: Limited options for resource allocation (CPU/Memory limits).
+
+7. **Stateful Application Management**: Lacks native support for managing stateful applications (e.g., persistent volumes).
+   
+8. **Minimal UI**: Basic UI compared to Kubernetes' more advanced management tools.
+   
+10. **Scaling Limits**: May not scale as efficiently as Kubernetes for large applications.
+ 
+12. **Fewer Integrations**: Limited third-party integrations for monitoring, logging, and CI/CD.
+
+13. **Upgrade Challenges**: Updating and managing large clusters can be more difficult than in Kubernetes.
+
+
 
 ---
 # How to Set Up Docker Swarm
