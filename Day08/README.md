@@ -75,14 +75,9 @@ While **Docker Swarm** and **Kubernetes** both offer container orchestration fea
 5. **Docker integration**: As part of the Docker ecosystem, Swarm integrates seamlessly with Docker CLI and Docker Compose.
 
 ---
-### **Conclusion**
+# How to Set Up Docker Swarm
 
-**Docker Swarm** is a powerful and easy-to-use container orchestration tool for managing multi-container applications in a distributed environment. It is a great choice for small to medium-sized applications where simplicity, scalability, and high availability are key requirements. While it is less feature-rich than **Kubernetes**, it offers a more straightforward setup and can meet the needs of many containerized applications.
----
-
-
-## Prerequisites
-
+### Prerequisites
 - Docker installed on all nodes
 - Access to multiple instances (machines or VMs)
 
@@ -121,9 +116,8 @@ docker node ls
 # Check networks
 docker network ls
 ```
-
+---
 ## Deploying Services
-
 ### Steps
 
 1. **Deploy a sample service:** Create a service with 3 replicas and publish it on port 8000.
@@ -154,9 +148,8 @@ docker service create --name monitor --publish 9100:9100 --mode global prom/node
 
 docker service create --name cadvisor --publish 8888:8080 --mode global google/cadvisor:latest
 ```
-
+---
 ## Managing Services and Nodes
-
 ### Steps
 
 1. **Check service tasks:** List the tasks of a service.
@@ -193,8 +186,8 @@ Use Swarm Visualizer from GitHub to visualize your cluster. Access the visualize
 ```bash
 docker run -it -d -p 8080:8080 --name swarm-visualizer -e HOST=<manager-ip> -e PORT=<manager-port> dockersamples/visualizer
 ```
+---
+### **Conclusion**
 
-## Conclusion
-
-Docker Swarm makes it easy to manage a cluster of Docker containers. With these simple commands, you can set up, deploy, and manage services across multiple nodes. Happy clustering!
-
+**Docker Swarm** is a powerful and easy-to-use container orchestration tool for managing multi-container applications in a distributed environment. It is a great choice for small to medium-sized applications where simplicity, scalability, and high availability are key requirements. While it is less feature-rich than **Kubernetes**, it offers a more straightforward setup and can meet the needs of many containerized applications.
+---
