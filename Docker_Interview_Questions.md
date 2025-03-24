@@ -13,5 +13,52 @@
 
 **• Scalability:** Docker makes it easy to scale applications by running multiple instances of containers.
 
+---
+ # 2. How Container are different from the virtual machines?  (OR)  Docker vs. Virtualization
+
+  | **Containers**                                                                      | **Virtual Machines**                                |
+|---------------------------------------------------------------------------------------|-----------------------------------------------------|
+|1. Lightweight: Containers Share the host OS kernel and run in isolated environments   | 1. Heavy weight: Each VM includes a full OS and runs on a hypervisor. |
+| More efficient; only the application and its dependencies are packaged.               | Less efficient; each VM includes an entire OS.       |
+| Better performance due to lower overhead.                                             | Slower performance due to the OS overhead.           |
+| Faster Startup (Seconds)                                                               | Slower startup (Minutes)                             | 
+| Provides process-level isolation.                                                      | Provides strong isolation with a separate OS.       |
 
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
