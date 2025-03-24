@@ -103,7 +103,21 @@ docker exec -it <container-name> <command>
 - **Docker Networks**: Allow containers to communicate with each other.
 ---
 
+# 5. What is the difference between COPY and ADD in a Dockerfile?
 
+|        **`docker COPY`**                                    |         **`docker ADD`**                                                                      |
+|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| 1. Copies files/folders from the host to the container.     | 1. Copies files/folders from the host to the container, but with additional extracts archives |
+| 2. Does not support URls                                    | 2. It can handle remote URLs as source paths and download files during the build.             |
+| 3. Does **not** automatically extract tar files.            | 3. Automatically extracts tar files when (such as .tar, .tar.gz, .zip,etc)into the container. |                                           
+| 4. More Secure and predictable.                             | 4. Less Secure (Due to extraction & Remote fetch)                                             |
+
+
+### **When to Use Each**:
+- **Use `docker COPY`** when you only need to copy files from your local machine into the container. It’s simpler and more predictable.
+- **Use `docker ADD`** when you need extra functionality, like copying from a remote URL or extracting tar files automatically.
+
+---
 
 
 
