@@ -118,8 +118,30 @@ docker exec -it <container-name> <command>
 - **Use `docker ADD`** when you need extra functionality, like copying from a remote URL or extracting tar files automatically.
 
 ---
+# 6. What is difference between CMD and ENTERPOINT?
 
+| **`CMD`**                                                                      | **`ENTRYPOINT`**                                                                               |
+|--------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| 1. Provides default arguments for the container when no command is specified.  | 1. Defines the main command to run when the container starts.                                  |
+| 2.  Can be overridden by command-line arguments when running the container.    | 2. Cannot be fully overridden (can append args) unless --entrypoint is specified               |
+| 3. Typically used to provide default arguments or commands.                    | 3. Used to set the main executable for the container.                                          |
+| 4. Can be combined with `ENTRYPOINT` to provide default arguments.             | 4. Can be combined with `CMD` to pass default arguments to the `ENTRYPOINT`.                   |
+| 5. `CMD ["echo", "Hello World"]`                                               | 5. `ENTRYPOINT ["echo"]` (executes `echo` command)                                             |
+(executes `echo` command with `"Hello World"` as argument)                       |
 
+---
+### **When to Use Each**:
+- **Use `CMD`** when you want to provide default arguments that can be easily overridden at runtime.
+- **Use `ENTRYPOINT`** when you want to set the main command that should always run, and optionally provide default arguments via `CMD`.
+---
+### **Example:**: **Using `ENTRYPOINT` and `CMD` together**:
+```dockerfile
+  ENTRYPOINT ["echo"]
+  CMD ["Hello World"]
+ ```
+- If no arguments are passed, this runs `echo Hello World`. If arguments are provided at runtime **(e.g., `docker run <container> Goodbye`)**,
+  it runs **`echo Goodbye`**.
+---
 
 
 
