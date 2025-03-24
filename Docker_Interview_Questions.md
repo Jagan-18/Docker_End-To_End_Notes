@@ -44,29 +44,24 @@
    - Finally, if everything works well, I push the image to an external registry like **Docker Hub** or **Quay.io** using the **docker push** command. This allows the image to be shared and used for deployments.
 
 ```bash
-   #  Builds Docker images from a Dockerfile.
+#  Builds Docker images from a Dockerfile.
+docker build -t <image-name> .
 
-   docker build -t <image-name> .
+#  To runs container from docker images (OR) Creates and starts a container from a Docker image.
+docker run -d --name <container-name> <image-name>
 
-   #  To runs container from docker images (OR) Creates and starts a container from a Docker image.
+-  -d: Runs the container in detached mode (in the background)
 
-   docker run -d --name <container-name> <image-name>
+# push the container image to public/private regestries to share the docker images.
+docker push <container-name>
 
-   -  -d: Runs the container in detached mode (in the background)
+# Lists all running containers.
+docker ps
 
-  # push the container image to public/private regestries to share the docker images.
+# Executes a command inside a running container. Commonly used to interact with the container's environment.
+docker exec -it <container-name> <command>
 
-  docker push <container-name>
-
-  # Lists all running containers.
-
-  docker ps
-
-  # Executes a command inside a running container. Commonly used to interact with the container's environment.
-
-  docker exec -it <container-name> <command>
-
-  - -it: Interactive terminal for running commands in the container.
+- -it: Interactive terminal for running commands in the container.
 ```
 
 
