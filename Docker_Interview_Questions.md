@@ -25,7 +25,22 @@
 | 5. Provides process-level isolation.                                                   | 5. Provides strong isolation with a separate OS.                      |
 
 ---
+# what is docker lifecycle ?
+- In my case, the Docker lifecycle process typically starts with writing a Dockerfile. For example, if a developer comes to me with a requirement to containerize an application,
 
+1. **Write the Dockerfile**:  
+   - When a requirement comes in to containerize an application, I start by writing a **Dockerfile**. This file contains the instructions needed to set up the environment and run the application.
+
+2. **Build the Docker Image**:  
+   - After the Dockerfile is complete, I use the **docker build** command to create a **Docker image** from the Dockerfile.
+
+3. **Run the Docker Container**:  
+   - Once the image is built, I use the **docker run** command to create and run a **container** from the image. This starts the application inside the container.
+
+4. **Push to a Registry**:  
+   - Finally, if everything works well, I push the image to an external registry like **Docker Hub** or **Quay.io** using the **docker push** command. This allows the image to be shared and used for deployments.
+
+---
 
 
 
