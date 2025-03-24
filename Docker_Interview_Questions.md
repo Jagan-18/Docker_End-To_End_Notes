@@ -49,7 +49,7 @@
 
    #  To runs container from docker images (OR) Creates and starts a container from a Docker image.
    docker run -d --name <container-name> <image-name>
-     - # -d: Runs the container in detached mode (in the background)
+   -  -d: Runs the container in detached mode (in the background)
 
   # push the container image to public/private regestries to share the docker images.
   docker push <container-name>
@@ -59,7 +59,7 @@
 
   # Executes a command inside a running container. Commonly used to interact with the container's environment.
   docker exec -it <container-name> <command>
-     # -it: Interactive terminal for running commands in the container.
+  - -it: Interactive terminal for running commands in the container.
 ```
 
 
