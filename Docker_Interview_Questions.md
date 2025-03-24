@@ -37,12 +37,12 @@
 
 3. **Run the Docker Container**:  
    - Once the image is built, I use the **docker run** command to create and run a **container** from the image. This starts the application inside the container.
-   
-- Docker images act as a instructions to build a docker container. It can be compared to a snapshot in a VM.
 
 4. **Push to a Registry**:  
    - Finally, if everything works well, I push the image to an external registry like **Docker Hub** or **Quay.io** using the **docker push** command. This allows the image to be shared and used for deployments.
 
+- Docker images act as a instructions to build a docker container. It can be compared to a snapshot in a VM.
+  
 ```bash
 #  Builds Docker images from a Dockerfile.
 docker build -t <image-name> .
@@ -63,12 +63,45 @@ docker exec -it <container-name> <command>
 
 - -it: Interactive terminal for running commands in the container.
 ```
-
-
-     
 ---
+# 4. Whar are the different types of docker components? or  Can you pls explane Docker Architecture and its components?
+- Docker has a client-server architecture, which consists of several key components that work together to enable containerization.
 
+### **Docker Architecture and Components**:
 
+1. **Docker Client**:
+
+   - The Docker Client is the interface used to interact with Docker. It sends commands to the Docker Daemon (server) to perform tasks like building, running, and managing containers. Common Docker commands are executed here, such as docker run, docker build, and docker push
+
+2. **Docker Daemon (Docker Engine)**:
+   - The Docker Daemon is responsible for managing Docker containers, images, networks, and volumes. It listens for Docker API requests and performs actions like building images, running containers, and managing Docker objects.
+     
+   - It is often referred to as docker engine and runs in the background.
+
+3. **Docker Images**:
+   - A Docker image is a read-only template that contains instructions for creating a container. Images are built from Dockerfiles.
+
+4. **Docker Containers**:
+   - Containers are running instances of Docker images. They are isolated environments where your application runs. They share the host OS kernel but are separate from each other.
+
+5. **Docker Registry**:
+   - A **Registry** is where Docker images are stored. **Docker Hub** is the most popular public registry. You can push and pull images from registries to share and use them.
+
+6. **Docker Volumes**:
+   - Volumes are used to store data persistently, outside of containers. If a container is stopped or deleted, the data in a volume stays safe and can be reused by other containers.
+
+7. **Docker Networks**:
+   - Networks allow containers to communicate with each other. Docker automatically creates a network for containers, but you can also create custom networks for better control.
+---
+### **Summary**:
+- **Docker Client**: The tool you use to interact with Docker.
+- **Docker Daemon**: The server that handles Docker commands and runs containers.
+- **Docker Images**: The templates that containers are created from.
+- **Docker Containers**: The running instances of Docker images.
+- **Docker Registry**: A place to store and share Docker images.
+- **Docker Volumes**: Persistent storage for container data.
+- **Docker Networks**: Allow containers to communicate with each other.
+---
 
 
 
