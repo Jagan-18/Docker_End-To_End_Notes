@@ -142,13 +142,149 @@ docker exec -it <container-name> <command>
 - If no arguments are passed, this runs `echo Hello World`. If arguments are provided at runtime **(e.g., `docker run <container> Goodbye`)**,
   it runs **`echo Goodbye`**.
 ---
+ # 7.what are the networking types in docker and what is the default?
+- Docker Networking is the way Docker containers connect and communicate with each other, the host machine, and external networks. It allows containers to send and receive data through different types of networks, ensuring smooth interaction between services within Docker.
+1. **Bridge** (Default)  
+   - The default network type. Containers are connected to a private internal network, and they communicate with each other via this network.
 
+2. **Host**  
+   - The container shares the network namespace with the host system, which means it uses the host’s IP address and can access the network directly.
 
+3. **None**  
+   - The container has no network access. It cannot connect to any network, including the host network.
 
+4. **Overlay**  
+   - Used in Docker Swarm for communication between containers running on different Docker hosts in a cluster.
 
+5. **Macvlan**  
+   - Allows containers to have their own MAC address, making them appear as physical devices on the network.
 
+---
 
+### **Default Networking Type**  
+- **Bridge** is the default networking type in Docker.
 
+---
+# 8. How to Isolate Networking Between Docker Containers
+- To isolate networking between Docker containers, By using custom networks, the `none` driver, and network policies, you can effectively isolate Docker containers from each other to ensure security and control over traffic flow.
+
+1. **Use Separate Networks for Containers**
+   - You can create custom Docker networks and assign containers to different networks, preventing them from communicating with containers on other networks.
+   - Example:
+     ```bash
+     docker network create network1
+     docker network create network2
+     docker run --network network1 mycontainer1
+     docker run --network network2 mycontainer2
+     ```
+     In this case, containers on `network1` cannot communicate with containers on `network2`.
+
+2. **Use the `none` Network Driver**
+   - The `none` driver completely isolates the container from any network. This is useful if you want to ensure that a container cannot access any network.
+   - Example:
+     ```bash
+     docker run --network none mycontainer
+     ```
+
+3. **Use Docker Compose with Network Configuration**
+   - In **Docker Compose**, you can define separate networks for different services to isolate them from one another.
+   - Example in `docker-compose.yml`:
+     ```yaml
+     version: '3'
+     services:
+       app1:
+         image: app1_image
+         networks:
+           - network1
+       app2:
+         image: app2_image
+         networks:
+           - network2
+
+     networks:
+       network1:
+       network2:
+     ```
+
+4. **Network Policies (for Kubernetes)**
+   - If you're using **Kubernetes**, you can apply network policies to control traffic between pods, ensuring isolation between them.
+
+---
+
+# 9. What is a Multi-Stage Docker Build?
+- A multi-stage Docker build is a process where you use multiple **FROM statements** in a single Dockerfile to create a more efficient image by separating the build process into different stages.
+  
+- This helps you to reduce the final image size by eliminating unnecessary build dependencies from the final image.
+  
+#### How Multi-Stage Builds Work:
+1. The **first stage (build stage)** includes all the dependencies required for building the application (e.g., compilers, libraries, and other build tools).
+2. The **second stage (runtime stage)** is the final image that only includes the runtime environment needed to execute the app.
+
+- In the final image, only the files explicitly copied from the build stage will be included, leaving behind all unnecessary build tools and intermediate files.
+
+#### Example of Multi-Stage Build:
+```bash
+# Stage 1: Build Stage
+FROM node:16 AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Stage 2: Runtime Stage
+FROM node:16-slim
+WORKDIR /app
+COPY --from=builder /app/build /app
+RUN npm install --only=production
+CMD ["node", "app.js"]
+```
+- **Stage 1 (builder):** The image starts with a full Node.js image (node:16), installs dependencies, and builds the app.
+- **Stage 2 (runtime):** The final image is based on a smaller image (node:16-slim), and it only includes the built application and necessary runtime dependencies.
+  
+This approach reduces the final image size by omitting build tools and other unnecessary files, which are only needed during the build process.
+---
+# 10. How to Reduce the Size of Your Docker Image? 
+- Reducing the size of Docker images helps in faster builds, quicker deployments, and more efficient resource usage.
+
+1. **Use Multi-Stage Builds**: Separate the build and runtime stages to include only necessary files in the final image.
+2. **Choose Smaller Base Images**: Start with lightweight images like `alpine` instead of larger ones like `ubuntu`.
+3. **Remove Unnecessary Files**: Clean up package manager caches and temporary files.
+4. **Minimize Layers**: Combine multiple `RUN` commands into one to reduce image layers.
+5. **Use `.dockerignore`**: Exclude unnecessary files from being added to the image.
+
+---
+# 11. What are Dangling Images in Docker?
+Dangling images are images that no longer have a tag or are not associated with any containers. These images are leftover from the process of building or updating images but are not in use anymore.
+
+- You can list dangling images by using the following command:
+  ```bash
+  docker images -f "dangling=true"
+  ```
+-This will remove all dangling images and free up disk space. and This will show you all the images that are untagged and not used.
+```bash
+docker image prune
+```
+(OR) - This will remove all dangling images. If you want to remove all unused images (not just dangling ones), you can use:
+```bash
+docker image prune -a
+```
+---
+### Difference Between Dangling and Unused Images
+**Dangling images:**
+- These are not tagged and not associated with any containers.
+  
+- They often represent layers from previous builds that are no longer in use.
+  
+- Can be removed using **docker image prune**.
+  
+ **Unused images:**
+  - These are images that are not currently in use by any container (i.e., no running container is using them).
+    
+- They might still be tagged.
+  
+- Can be removed manually or by running **docker image prune -a**.
+---
 
 
 
