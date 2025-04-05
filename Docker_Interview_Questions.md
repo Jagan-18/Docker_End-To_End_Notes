@@ -349,9 +349,28 @@ To secure containers, I would take the following steps:
 - Using a single command (`docker-compose up`), Docker Compose allows you to start, stop, and manage multiple containers at once, making it easy to handle complex applications that require several services, such as databases, web servers, and caches.
 
 ---
+# 18 how do you persist data in docker cotainers?
+To persist data in Docker, I would use **Docker Volumes**,**Bind Mounts**, or **tmpfs Mounts,** depending on the use case. These options help keep data persistent beyond the container's lifecycle, and they are easy to manage and share across containers.
+1. **Docker Volumes** (Recommended):
+   - **Create a volume**:  
+     `docker volume create my_volume`
+   - **Mount the volume**:  
+     `docker run -v my_volume:/data my_image`
+   - **Why use volumes**: Volumes are managed by Docker, are persistent beyond container lifecycles, and are easy to back up and share across multiple containers.
 
+2. **Bind Mounts** (Alternative):
+   - **Mount a host directory**:  
+     `docker run -v /path/on/host:/data my_image`
+   - **Why use bind mounts**: Bind mounts are tied to the host system and are useful when you need direct access to a specific directory on the host.
 
+3. **tmpfs Mounts** (For Temporary Data):
+   - **Mount temporary data**:  
+     `docker run --mount type=tmpfs,destination=/data my_image`
+   - **Why use tmpfs mounts**: tmpfs mounts are stored in memory and are used for non-persistent, temporary data that does not need to be stored after the container stops.
 
+### **Summary:**
+- **Volumes** are the preferred method for persistence, **Bind Mounts** for direct host access, and **tmpfs** for temporary data stored in memory.
+---
 
 
 
