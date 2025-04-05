@@ -428,9 +428,9 @@ To connect two Docker containers, the most common approach is to use **Docker ne
 To update a running Docker container without downtime, you can use strategies like **rolling updates** or **Blue-Green deployment**.
 1. **Rolling Updates (using Docker Swarm or Docker Compose)**:
    - **Docker Swarm** allows you to update containers one by one, keeping the service available during the update.
-   - Example command in Docker Swarm:-   `docker service update --image <new_image> <service_name>` 
+       - Example command in Docker Swarm:-   `docker service update --image <new_image> <service_name>` 
    - **Docker Compose** can also be used to update the containers without downtime by rebuilding and restarting the services one at a time.
-   - Example command:-  `docker-compose up -d --no-deps --build <service_name>`
+       - Example command:-  `docker-compose up -d --no-deps --build <service_name>`
 2. **Blue-Green Deployment**:
    - In **Blue-Green Deployment**, you maintain two identical environments (Blue and Green). 
    - You run the updated version in the Green environment and switch the traffic from Blue to Green once everything is ready. This ensures no downtime.
