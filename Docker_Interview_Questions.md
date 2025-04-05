@@ -397,6 +397,14 @@ When a Docker container fails, there are several steps you can take to troublesh
 7. **Verify Dockerfile/Configuration**: Review the Dockerfile or container configurations for missing dependencies or errors.
 
 ---
+When a Docker container fails, there are several steps you can take to troubleshoot and identify the issue.
+1. Check container logs with  `docker logs <container_id>`
+2. Inspect the container's status using `docker ps -a`
+3. Inspect the container's configuration `docker inspect <container_id>`
+ 4. check running processes `docker top <container_id>`
+5. Run in interactive mode `docker run -it <image> /bin/sh`
+6.Check resource utilization using docker stats
+7.Verify Dockerfile/configurations for missing dependencies or errors.
 
 
 
