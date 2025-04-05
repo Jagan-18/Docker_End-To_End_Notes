@@ -352,8 +352,8 @@ To secure containers, I would take the following steps:
 # 18 how do you persist data in docker cotainers?
 To persist data in Docker, I would use **Docker Volumes**,**Bind Mounts**, or **tmpfs Mounts,** depending on the use case. These options help keep data persistent beyond the container's lifecycle, and they are easy to manage and share across containers.
 1. **Docker Volumes** (Recommended):
-   - **Create a volume**: docker volume create my_volume
-   - **Mount the volume**: docker run -v my_volume:/data my_image
+   - **Create a volume**: `docker volume create my_volume`
+   - **Mount the volume**: `docker run -v my_volume:/data my_image`
    - Volumes are managed by Docker, persist even if the container is removed, and are easy to back up.
 
 2. **Bind Mounts** (Alternative):
@@ -362,12 +362,12 @@ To persist data in Docker, I would use **Docker Volumes**,**Bind Mounts**, or **
    - Bind mounts are tied to the host system, useful for directly accessing data.
 
 3. Use **tmpfs** mounts for non-persistent data.
- `docker run --mount type=tmpfs,destination=/data my_image`
-- tmpfs mounts are stored in memory and are used for non-persistent, temporary data that does not need to be stored after the container stops.
+   -  `docker run --mount type=tmpfs,destination=/data my_image`
+   -  tmpfs mounts are stored in memory and are used for non-persistent, temporary data that does not need to be stored after the container stops.
 
 ### **Summary:**
 - **Volumes** are the preferred method for persistence, **Bind Mounts** for direct host access, and **tmpfs** for temporary data stored in memory
-
+---
 
 
 
