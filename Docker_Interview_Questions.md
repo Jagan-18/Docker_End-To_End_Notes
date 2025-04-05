@@ -388,17 +388,11 @@ When a Docker container fails, there are several steps you can take to troublesh
 # 21. How do you limit container resources?
 You can limit the resources (CPU, memory, etc.) available to a Docker container using various flags when starting the container.
 1. **Limit CPU Usage**:- To limit the CPU shares (relative weight):
-     ```bash
-     docker run --cpu-shares <value> <image_name>
-     ```
-- To limit the number of CPU cores:
-     ```bash
-     docker run --cpus=<number_of_cpus> <image_name>
-     ```
+     `docker run --cpu-shares <value> <image_name>`
+- To limit the number of CPU cores:-
+     `docker run --cpus=<number_of_cpus> <image_name>`
 2. **Limit Memory Usage**:- To set a memory limit:
-     ```bash
-     docker run --memory=<memory_limit> <image_name>
-     ```
+     `docker run --memory=<memory_limit> <image_name>`
   Example:   **`docker run --memory=512m <image_name>`**
  - To set both memory and swap limit:
      `docker run --memory=<memory_limit> --memory-swap=<swap_limit> <image_name>`
