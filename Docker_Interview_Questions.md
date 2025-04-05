@@ -399,7 +399,7 @@ You can limit the resources (CPU, memory, etc.) available to a Docker container 
      ```bash
      docker run --memory=<memory_limit> <image_name>
      ```
-**Example:**
+  **Example:**
      ```bash
      docker run --memory=512m <image_name>
      ```
