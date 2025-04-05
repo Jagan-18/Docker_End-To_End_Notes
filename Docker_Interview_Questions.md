@@ -477,11 +477,12 @@ docker run -d --name my_container nginx
 
 # 27. How to Copy Files from a Running Container to the Host.?
 To copy files from a running Docker container to the host system, you can use the `docker cp` command.
+
 **Command:-**  `docker cp <container_id>:<path_to_file_inside_container> <path_on_host>`
-    - **`<container_id>`**: The ID or name of the running container.
-    - **`<path_to_file_inside_container>`**: The file or directory inside the container you want to copy.
-    - **`<path_on_host>`**: The destination path on your host machine where the file will be copied.
-             
+
+  - **`<container_id>`**: The ID or name of the running container.
+  - **`<path_to_file_inside_container>`**: The file or directory inside the container you want to copy.
+  - **`<path_on_host>`**: The destination path on your host machine where the file will be copied.           
 **Example**: If you want to copy a file called `example.txt` from the container `/app` directory to the `/home/user/` directory on the host, you would use:
 ```bash
 docker cp <container_id>:/app/example.txt /home/user/
