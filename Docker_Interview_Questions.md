@@ -370,7 +370,7 @@ To persist data in Docker, I would use **Docker Volumes**,**Bind Mounts**, or **
 **Summary:**-  **Volumes** are the preferred method for persistence, **Bind Mounts** for direct host access, and **tmpfs** for temporary data stored in memory
 ---
 
-# 19. How do you troubleshoot a failing docker container?
+# 19. How do you troubleshoot a failing docker container? (OR) How do you debug a containner crash?
 When a Docker container fails, there are several steps you can take to troubleshoot and identify the issue.
 1. Check container logs with  `docker logs <container_id>`
 2. Inspect the container's status using `docker ps -a`
@@ -480,9 +480,10 @@ To copy files from a running Docker container to the host system, you can use th
 
 **Command:-**  `docker cp <container_id>:<path_to_file_inside_container> <path_on_host>`
 
-  - **`<container_id>`**: The ID or name of the running container.
-  - **`<path_to_file_inside_container>`**: The file or directory inside the container you want to copy.
-  - **`<path_on_host>`**: The destination path on your host machine where the file will be copied.           
+   - **`<container_id>`**: The ID or name of the running container.
+   - **`<path_to_file_inside_container>`**: The file or directory inside the container you want to copy.
+   - **`<path_on_host>`**: The destination path on your host machine where the file will be copied.
+       
 **Example**: If you want to copy a file called `example.txt` from the container `/app` directory to the `/home/user/` directory on the host, you would use:
 ```bash
 docker cp <container_id>:/app/example.txt /home/user/
@@ -493,7 +494,19 @@ docker cp my_container:/app/example.txt /home/user/
 ```
 ---
 
+# 28. How to Expose a Container's Port to the Host?
+To expose a container’s port to the host, you use the **-p** or **--publish flag** with the docker run command. This binds a container’s internal port to a port on the host machine, allowing external access.
 
+```bash
+docker run -p <host_port>:<container_port> <image_name>
+
+docker run -p 8080:80 nginx
+```
+- If you want to expose port 80 of the container to port 8080 on the host machine, you would run and you can access the Nginx web server by visiting `http://localhost:8080` in a web browser.
+
+**If your container exposes multiple ports, you can bind multiple ports:** `docker run -p 8080:80 -p 443:443 <image_name>`
+
+---
 
 
 
