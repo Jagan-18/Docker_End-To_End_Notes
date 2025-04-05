@@ -447,9 +447,6 @@ To update a running Docker container without downtime, you can use strategies li
 - **Blue-Green Deployment** is another strategy that avoids downtime by switching between two environments.
 ---
 
-# 25. How do you Secure a Docker Container?
-
----   
 # 26. How to Run a Docker Container in the Background?
 To run a Docker container in the background, you can use the **-d (detached) flag** with the docker run command. This will start the container in detached mode, meaning it runs in the background without blocking your terminal.
 ```bash
@@ -461,7 +458,7 @@ docker run -d --name my_container nginx
 ```
 ---
 
-# 27. what is the difference between Docker Image and Docker Container.?
+# 26. what is the difference between Docker Image and Docker Container.?
  |             **Docker Image**                                               |            **Docker Container**                                                 |
  |----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
  | A Docker image is a **read-only template** used to create containers.      | A Docker container is a **running instance** of a Docker image.                 |
@@ -478,12 +475,13 @@ docker run -d --name my_container nginx
 - **Docker Container**: A **dynamic, running instance** of an image.
 ---
 
-# 28. How to Copy Files from a Running Container to the Host.?
+# 27. How to Copy Files from a Running Container to the Host.?
 To copy files from a running Docker container to the host system, you can use the `docker cp` command.
-**Command:-  `docker cp <container_id>:<path_to_file_inside_container> <path_on_host>`
-            - **`<container_id>`**: The ID or name of the running container.
-            - **`<path_to_file_inside_container>`**: The file or directory inside the container you want to copy.
-             - **`<path_on_host>`**: The destination path on your host machine where the file will be copied.
+**Command:-**  `docker cp <container_id>:<path_to_file_inside_container> <path_on_host>`
+    - **`<container_id>`**: The ID or name of the running container.
+    - **`<path_to_file_inside_container>`**: The file or directory inside the container you want to copy.
+    - **`<path_on_host>`**: The destination path on your host machine where the file will be copied.
+             
 **Example**: If you want to copy a file called `example.txt` from the container `/app` directory to the `/home/user/` directory on the host, you would use:
 ```bash
 docker cp <container_id>:/app/example.txt /home/user/
