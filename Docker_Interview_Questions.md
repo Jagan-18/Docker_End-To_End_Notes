@@ -413,6 +413,26 @@ You can limit the resources (CPU, memory, etc.) available to a Docker container 
      docker run --net-rate=<value> <image_name>
      ```
 ---
+# 22. How do you connect two docker containers?
+To connect two Docker containers, the most common approach is to use **Docker networks**. By connecting both containers to the same network, they can communicate with each other.
+
+1. **Create a Network** (if not already created):-  `docker network create my_network`
+2. **Run Containers on the Same Network**:
+   - When running the first container, connect it to the created network:
+     `docker run --network my_network --name container1 <image_name>`
+   - Then, run the second container on the same network:
+     ```bash
+     docker run --network my_network --name container2 <image_name>
+     ```
+3. **Communicate Between Containers**:
+   - Once both containers are on the same network, they can communicate with each other by using the container names as hostnames.
+   - For example, from **container1**, you can ping **container2** by using:
+     ```bash
+     docker exec container1 ping container2
+     ```
+---
+
+
 
 
 
