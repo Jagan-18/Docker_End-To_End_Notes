@@ -370,43 +370,52 @@ To persist data in Docker, I would use **Docker Volumes**,**Bind Mounts**, or **
 ---
 # 19. How do you troubleshoot a failing docker container?
 When a Docker container fails, there are several steps you can take to troubleshoot and identify the issue.
-1. **Check Container Logs**:  Look at the logs for error messages.  
-   ```bash
-   docker logs <container_id>
-   ```
-2. **Inspect the Container's Status**: Check if the container is running or stopped.  
-   ```bash
-   docker ps -a
-   ```
-3. **Inspect the Container's Configuration**: Get detailed information about the container's configuration.  
-   ```bash
-   docker inspect <container_id>
-   ```
-4. **Check Running Processes**: View the processes running inside the container.  
-   ```bash
-   docker top <container_id>
-   ```
-5. **Run in Interactive Mode**: Start the container interactively to troubleshoot manually.  
-   ```bash
-   docker run -it <image_name> /bin/sh
-   ```
-6. **Check Resource Utilization**: Monitor the resource usage (CPU, memory) of running containers.  
-   ```bash
-   docker stats
-   ```
-7. **Verify Dockerfile/Configuration**: Review the Dockerfile or container configurations for missing dependencies or errors.
-
----
-When a Docker container fails, there are several steps you can take to troubleshoot and identify the issue.
 1. Check container logs with  `docker logs <container_id>`
 2. Inspect the container's status using `docker ps -a`
 3. Inspect the container's configuration `docker inspect <container_id>`
- 4. check running processes `docker top <container_id>`
+4. check running processes `docker top <container_id>`
 5. Run in interactive mode `docker run -it <image> /bin/sh`
-6.Check resource utilization using docker stats
-7.Verify Dockerfile/configurations for missing dependencies or errors.
-
-
+6. Check resource utilization using `docker stats`
+7. Verify Dockerfile/configurations for missing dependencies or errors.
+---
+# 20 How do you clean up unused docker resources?
+1. Remove stopped containers: `docker rm$(docker ps -aq)`
+  - **Note:** If you only want to remove stopped containers, the `docker container prune` command
+2. Remove unused images: `docker rmi $(docker images -q)` or (`docker image prune -a` for all unused images).
+3. Remove unused volumes: `docker volume prune`
+4. To clean up all unused containers, images, volumes, and networks, use: `docker system prune`
+---
+# 21. How do you limit container resources?
+You can limit the resources (CPU, memory, etc.) available to a Docker container using various flags when starting the container.
+1. **Limit CPU Usage**:- To limit the CPU shares (relative weight):
+     ```bash
+     docker run --cpu-shares <value> <image_name>
+     ```
+- To limit the number of CPU cores:
+     ```bash
+     docker run --cpus=<number_of_cpus> <image_name>
+     ```
+2. **Limit Memory Usage**:- To set a memory limit:
+     ```bash
+     docker run --memory=<memory_limit> <image_name>
+     ```
+**Example:**
+     ```bash
+     docker run --memory=512m <image_name>
+     ```
+ - To set both memory and swap limit:
+     ```bash
+     docker run --memory=<memory_limit> --memory-swap=<swap_limit> <image_name>
+     ```
+3. **Limit Disk I/O**:- To limit the read/write rate for disk I/O:
+     ```bash
+     docker run --blkio-weight=<value> <image_name>
+     ```
+4. **Limit Network Bandwidth**:- To limit the network bandwidth:
+     ```bash
+     docker run --net-rate=<value> <image_name>
+     ```
+---
 
 
 
