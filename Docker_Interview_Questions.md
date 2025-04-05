@@ -393,7 +393,9 @@ You can limit the resources (CPU, memory, etc.) available to a Docker container 
      `docker run --cpus=<number_of_cpus> <image_name>`
 2. **Limit Memory Usage**:- To set a memory limit:
      `docker run --memory=<memory_limit> <image_name>`
+  
   Example:   **`docker run --memory=512m <image_name>`**
+  
  - To set both memory and swap limit:
      `docker run --memory=<memory_limit> --memory-swap=<swap_limit> <image_name>`
 3. **Limit Disk I/O**:- To limit the read/write rate for disk I/O:
@@ -403,7 +405,6 @@ You can limit the resources (CPU, memory, etc.) available to a Docker container 
 ---
 # 22. How do you connect two docker containers?
 To connect two Docker containers, the most common approach is to use **Docker networks**. By connecting both containers to the same network, they can communicate with each other.
-
 1. **Create a Network** (if not already created):-  `docker network create my_network`
 2. **Run Containers on the Same Network**:
    - When running the first container, connect it to the created network:
@@ -415,6 +416,16 @@ To connect two Docker containers, the most common approach is to use **Docker ne
    - For example, from **container1**, you can ping **container2** by using:
      `docker exec container1 ping container2`
 ---
+# 23. What Happens When You Remove a Running Docker Container?
+1. **The Container Stops**:- Removing a running container will automatically stop it.
+2. **The Container is Deleted**:- The container is deleted from the system along with its settings and filesystem.
+3. **Data Loss**:- Any data inside the container (not in a volume) will be lost.
+4. **The Image Remains**:- The Docker image used to create the container is not affected and remains intact.
+5. To remove a running container, you can use:-  `docker rm -f <container_name_or_id>`
+ - This command forces the container to stop and then removes it.
+---
+
+
 
 
 
