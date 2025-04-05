@@ -255,6 +255,7 @@ This approach reduces the final image size by omitting build tools and other unn
 5. **Use `.dockerignore`**: Exclude unnecessary files from being added to the image.
 
 ---
+
 # 11. What are Dangling Images in Docker?
 Dangling images are images that no longer have a tag or are not associated with any containers. These images are leftover from the process of building or updating images but are not in use anymore.
 
@@ -271,6 +272,7 @@ docker image prune
 docker image prune -a
 ```
 ---
+
 ### 12 Difference Between Dangling and Unused Images
 **Dangling images:**
 - These are not tagged and not associated with any containers.
@@ -286,6 +288,7 @@ docker image prune -a
   
 - Can be removed manually or by running **docker image prune -a**.
 ---
+
 # 13. What are Distro-less Images in Docker?
 **Distro-less images** are minimal Docker images that contain only the application and its dependencies, without any operating system (OS) or package manager. These images are designed to be as small and efficient as possible by eliminating the unnecessary parts of a traditional base image.
 
@@ -299,6 +302,7 @@ docker image prune -a
 Your answer is mostly on point, but it could use a little more clarity and additional context. Here's a refined version of your answer, with minor corrections and improvements:
 
 ---
+
 # 14. Can you pls explain Realtime challenges  with docker ?
 
 1. **Single Point of Failure (Docker Daemon)**  
@@ -311,6 +315,7 @@ Your answer is mostly on point, but it could use a little more clarity and addit
    Running too many containers on a single host can lead to resource constraints such as CPU, memory, and storage. This can cause containers to slow down or even crash, affecting application performance and availability.
 
 ---
+
 # 15. what are the step you take the to secure the conatiners
 ### **Steps to Secure Containers**
 To secure containers, I would take the following steps:
@@ -325,6 +330,7 @@ To secure containers, I would take the following steps:
    Use security scanning tools like **Docker Scan**, **Trivy**, or third-party utilities (e.g., **Aqua Security**) to check container images for vulnerabilities and security risks.
 
 ---
+
 # 16. What are Bind Mounts in Docker?
 - Bind Mounts in Docker allow you to mount a file or directory from the host system into a container. Unlike volumes, which are managed by Docker, bind mounts directly map a file or directory on the host to a location inside the container.
 
@@ -349,6 +355,7 @@ To secure containers, I would take the following steps:
 - Using a single command (`docker-compose up`), Docker Compose allows you to start, stop, and manage multiple containers at once, making it easy to handle complex applications that require several services, such as databases, web servers, and caches.
 
 ---
+
 # 18 how do you persist data in docker cotainers?
 To persist data in Docker, I would use **Docker Volumes**,**Bind Mounts**, or **tmpfs Mounts,** depending on the use case. These options help keep data persistent beyond the container's lifecycle, and they are easy to manage and share across containers.
 1. **Docker Volumes** (Recommended):
@@ -368,6 +375,7 @@ To persist data in Docker, I would use **Docker Volumes**,**Bind Mounts**, or **
 ### **Summary:**
 - **Volumes** are the preferred method for persistence, **Bind Mounts** for direct host access, and **tmpfs** for temporary data stored in memory
 ---
+
 # 19. How do you troubleshoot a failing docker container?
 When a Docker container fails, there are several steps you can take to troubleshoot and identify the issue.
 1. Check container logs with  `docker logs <container_id>`
@@ -378,6 +386,7 @@ When a Docker container fails, there are several steps you can take to troublesh
 6. Check resource utilization using `docker stats`
 7. Verify Dockerfile/configurations for missing dependencies or errors.
 ---
+
 # 20 How do you clean up unused docker resources?
 1. Remove stopped containers: `docker rm$(docker ps -aq)`
   - **Note:** If you only want to remove stopped containers, the `docker container prune` command
@@ -385,6 +394,7 @@ When a Docker container fails, there are several steps you can take to troublesh
 3. Remove unused volumes: `docker volume prune`
 4. To clean up all unused containers, images, volumes, and networks, use: `docker system prune`
 ---
+
 # 21. How do you limit container resources?
 You can limit the resources (CPU, memory, etc.) available to a Docker container using various flags when starting the container.
 1. **Limit CPU Usage**:- To limit the CPU shares (relative weight):
@@ -403,6 +413,7 @@ You can limit the resources (CPU, memory, etc.) available to a Docker container 
 4. **Limit Network Bandwidth**:- To limit the network bandwidth:
      `docker run --net-rate=<value> <image_name>`
 ---
+
 # 22. How do you connect two docker containers?
 To connect two Docker containers, the most common approach is to use **Docker networks**. By connecting both containers to the same network, they can communicate with each other.
 1. **Create a Network** (if not already created):-  `docker network create my_network`
@@ -416,6 +427,7 @@ To connect two Docker containers, the most common approach is to use **Docker ne
    - For example, from **container1**, you can ping **container2** by using:
      `docker exec container1 ping container2`
 ---
+
 # 23. What Happens When You Remove a Running Docker Container?
 1. **The Container Stops**:- Removing a running container will automatically stop it.
 2. **The Container is Deleted**:- The container is deleted from the system along with its settings and filesystem.
@@ -424,6 +436,7 @@ To connect two Docker containers, the most common approach is to use **Docker ne
 5. To remove a running container, you can use:-  `docker rm -f <container_name_or_id>`
       - This command forces the container to stop and then removes it.
 ---
+
 # 24. How to Update a Running Docker Container Without Downtime?
 To update a running Docker container without downtime, you can use strategies like **rolling updates** or **Blue-Green deployment**.
 1. **Rolling Updates (using Docker Swarm or Docker Compose)**:
@@ -439,6 +452,7 @@ To update a running Docker container without downtime, you can use strategies li
 - **Rolling Updates** (Docker Swarm or Compose) allow containers to be updated one by one with minimal or no downtime.
 - **Blue-Green Deployment** is another strategy that avoids downtime by switching between two environments.
 ---
+
 # 25. How do you Secure a Docker Container?
 1. Always use **small, minimal base images** (like Alpine) to reduce the attack surface. The fewer components there are, the fewer potential vulnerabilities you have.
 2. **Avoid Running as Root (Use Non-Root User)**:- Never run your container as the **root** user. Instead, create a non-root user and run the container with that user to limit privileges.
@@ -455,7 +469,8 @@ docker run -d --name my_container <myimage>
 docker run -d --name my_container nginx
 ```
 ---
-# 27. what is the difference between Docker Image and Docker Container:
+
+# 27. what is the difference between Docker Image and Docker Container.?
 | **Aspect**                |             **Docker Image**                                               |            **Docker Container**                                                 |
 |---------------------------|----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | **Definition**            | A Docker image is a **read-only template** used to create containers.      | A Docker container is a **running instance** of a Docker image.                 |
@@ -471,6 +486,23 @@ docker run -d --name my_container nginx
 - **Docker Image**: A **static template** for creating containers.
 - **Docker Container**: A **dynamic, running instance** of an image.
 ---
+
+# 28. How to Copy Files from a Running Container to the Host.?
+To copy files from a running Docker container to the host system, you can use the `docker cp` command.
+**Command:-  `docker cp <container_id>:<path_to_file_inside_container> <path_on_host>`
+            - **`<container_id>`**: The ID or name of the running container.
+            - **`<path_to_file_inside_container>`**: The file or directory inside the container you want to copy.
+             - **`<path_on_host>`**: The destination path on your host machine where the file will be copied.
+**Example**: If you want to copy a file called `example.txt` from the container `/app` directory to the `/home/user/` directory on the host, you would use:
+```bash
+docker cp <container_id>:/app/example.txt /home/user/
+```
+**Example with Container Name**:
+```bash
+docker cp my_container:/app/example.txt /home/user/
+```
+---
+
 
 
 
