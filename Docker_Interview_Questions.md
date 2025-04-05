@@ -401,17 +401,11 @@ You can limit the resources (CPU, memory, etc.) available to a Docker container 
      ```
   Example:   **`docker run --memory=512m <image_name>`**
  - To set both memory and swap limit:
-     ```bash
-     docker run --memory=<memory_limit> --memory-swap=<swap_limit> <image_name>
-     ```
+     `docker run --memory=<memory_limit> --memory-swap=<swap_limit> <image_name>`
 3. **Limit Disk I/O**:- To limit the read/write rate for disk I/O:
-     ```bash
-     docker run --blkio-weight=<value> <image_name>
-     ```
+     ` docker run --blkio-weight=<value> <image_name>`
 4. **Limit Network Bandwidth**:- To limit the network bandwidth:
-     ```bash
-     docker run --net-rate=<value> <image_name>
-     ```
+     `docker run --net-rate=<value> <image_name>`
 ---
 # 22. How do you connect two docker containers?
 To connect two Docker containers, the most common approach is to use **Docker networks**. By connecting both containers to the same network, they can communicate with each other.
@@ -421,15 +415,11 @@ To connect two Docker containers, the most common approach is to use **Docker ne
    - When running the first container, connect it to the created network:
      `docker run --network my_network --name container1 <image_name>`
    - Then, run the second container on the same network:
-     ```bash
-     docker run --network my_network --name container2 <image_name>
-     ```
+     `docker run --network my_network --name container2 <image_name>`
 3. **Communicate Between Containers**:
    - Once both containers are on the same network, they can communicate with each other by using the container names as hostnames.
    - For example, from **container1**, you can ping **container2** by using:
-     ```bash
-     docker exec container1 ping container2
-     ```
+     `docker exec container1 ping container2`
 ---
 
 
