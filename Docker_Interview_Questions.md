@@ -290,6 +290,7 @@ docker image prune -a
 ---
 
 # 13. What are Distro-less Images in Docker?
+
 **Distro-less images** are minimal Docker images that contain only the application and its dependencies, without any operating system (OS) or package manager. These images are designed to be as small and efficient as possible by eliminating the unnecessary parts of a traditional base image.
 
 ### **Key Characteristics:**
@@ -298,11 +299,6 @@ docker image prune -a
 - They help **reduce the attack surface**, improve security, and minimize image size.
 
 ---
-
-Your answer is mostly on point, but it could use a little more clarity and additional context. Here's a refined version of your answer, with minor corrections and improvements:
-
----
-
 # 14. Can you pls explain Realtime challenges  with docker ?
 
 1. **Single Point of Failure (Docker Daemon)**  
@@ -313,23 +309,24 @@ Your answer is mostly on point, but it could use a little more clarity and addit
 
 3. **Resource Constraints**  
    Running too many containers on a single host can lead to resource constraints such as CPU, memory, and storage. This can cause containers to slow down or even crash, affecting application performance and availability.
-
 ---
 
 # 15. what are the step you take the to secure the conatiners
-1. **Use Minimal or Distroless Images**  Start with minimal base images or distroless images in multi-stage builds to reduce the attack surface by minimizing unnecessary packages.
 
-2. **Proper Networking Configuration**   Ensure proper container networking. Configure custom bridge networks or isolated networks to prevent unnecessary container communication and potential security breaches.
+1. **Use Minimal or Distroless Images:-** Start with minimal base images or distroless images in multi-stage builds to reduce the attack surface by minimizing unnecessary packages.
 
-3. **Image Scanning**   Use security scanning tools like **Docker Scan**, **Trivy**, or third-party utilities (e.g., **Aqua Security**) to check container images for vulnerabilities and security risks.
----
+2. **Proper Networking Configuration:-** Ensure proper container networking. Configure custom bridge networks or isolated networks to prevent unnecessary container communication and potential security breaches.
+
+3. **Image Scanning:-** Use security scanning tools like **Docker Scan**, **Trivy**, or third-party utilities (e.g., **Aqua Security**) to check container images for vulnerabilities and security risks.
+   
 **(OR)**
+
 1. Always use **small, minimal base images** (like Alpine) to reduce the attack surface. The fewer components there are, the fewer potential vulnerabilities you have.
 2. **Avoid Running as Root (Use Non-Root User)**:- Never run your container as the **root** user. Instead, create a non-root user and run the container with that user to limit privileges.
 3. **Use Signed Images (Docker Content Trust)**:- Enable **Docker Content Trust (DCT)** to ensure you are using **signed images**. This helps verify the authenticity and integrity of images.
 4. Regularly scan your Docker images for **security vulnerabilities** using tools like **Docker Scan**.
 ---
----
+
 # 16. What are Bind Mounts in Docker?
 
 - Bind Mounts in Docker allow you to mount a file or directory from the host system into a container. Unlike volumes, which are managed by Docker, bind mounts directly map a file or directory on the host to a location inside the container.
@@ -338,7 +335,7 @@ Your answer is mostly on point, but it could use a little more clarity and addit
 
 # Volumes vs Bind Mounts in Docker
  
- | **Volumes**                                                                                | **Bind Mounts**                                                                               |
+|          **Volumes**                                                                        |                  **Bind Mounts**                                                              |
 |---------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
 | Volumes are managed by Docker and stored in Docker's default directory on the host system.  | Bind mounts are mapped directly from the host's filesystem to the container.                  |
 | Stored in Docker's `/var/lib/docker/volumes` (by default).                                  | Can be anywhere on the host system (e.g., `/home/user/data`).                                 |
@@ -465,16 +462,16 @@ docker run -d --name my_container nginx
 ---
 
 # 27. what is the difference between Docker Image and Docker Container.?
-| **Aspect**                |             **Docker Image**                                               |            **Docker Container**                                                 |
-|---------------------------|----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
-| **Definition**            | A Docker image is a **read-only template** used to create containers.      | A Docker container is a **running instance** of a Docker image.                 |
-| **State**                 | **Immutable (Read-only)**                                                  | **Mutable (Writable)**                                                          |
-| **Purpose**               | Used to package and distribute an application along with its dependencies. | Runs the application based on the image and allows changes during runtime.      |
-| **Lifecycle**             | Exists as long as it’s stored in a registry or locally.                    | Exists only while it’s running. It can be started, stopped, and removed.        |
-| **Storage**               | Stored in Docker repositories (e.g., Docker Hub).                          | Stored on the host machine, created from an image.                              |
-| **Modification**          | Cannot be changed once created.                                            | Can be modified while running (e.g., writing files).                            |
-| **Example**               | `nginx`, `ubuntu`, `node` (as images in a registry).                       | A running instance of `nginx` or `ubuntu` container.                            |
-| **Command to Create**     | `docker pull <image_name>`                                                 | `docker run -d <image_name>`                                                    |
+ |             **Docker Image**                                               |            **Docker Container**                                                 |
+ |----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+ | A Docker image is a **read-only template** used to create containers.      | A Docker container is a **running instance** of a Docker image.                 |
+ | **Immutable (Read-only)**                                                  | **Mutable (Writable)**                                                          |
+ | Used to package and distribute an application along with its dependencies. | Runs the application based on the image and allows changes during runtime.      |
+ | Exists as long as it’s stored in a registry or locally.                    | Exists only while it’s running. It can be started, stopped, and removed.        |
+ | Stored in Docker repositories (e.g., Docker Hub).                          | Stored on the host machine, created from an image.                              |
+ | Cannot be changed once created.                                            | Can be modified while running (e.g., writing files).                            |
+ | `nginx`, `ubuntu`, `node` (as images in a registry).                       | A running instance of `nginx` or `ubuntu` container.                            |
+ | `docker pull <image_name>`                                                 | `docker run -d <image_name>`                                                    |
 ---
 ### **Summary**:
 - **Docker Image**: A **static template** for creating containers.
