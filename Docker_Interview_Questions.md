@@ -399,11 +399,7 @@ You can limit the resources (CPU, memory, etc.) available to a Docker container 
      ```bash
      docker run --memory=<memory_limit> <image_name>
      ```
-  **Example:**
-  
-     ```bash
-     docker run --memory=512m <image_name>
-     ```
+  Example:   **`docker run --memory=512m <image_name>`**
  - To set both memory and swap limit:
      ```bash
      docker run --memory=<memory_limit> --memory-swap=<swap_limit> <image_name>
