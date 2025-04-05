@@ -469,6 +469,7 @@ docker run -d --name my_container nginx
  | Cannot be changed once created.                                            | Can be modified while running (e.g., writing files).                            |
  | `nginx`, `ubuntu`, `node` (as images in a registry).                       | A running instance of `nginx` or `ubuntu` container.                            |
  | `docker pull <image_name>`                                                 | `docker run -d <image_name>`                                                    |
+ 
 ---
 ### **Summary**:
 - **Docker Image**: A **static template** for creating containers.
@@ -508,11 +509,46 @@ docker run -p 8080:80 nginx
 
 ---
 
+# 29. what is difference between Docker Compose and Docker Swarm
+- **Docker Compose**: Manages multi-container applications on a single host machine.
+- **Docker Swarm**: Clusters multiple docker hosts for scalability.
 
+| **Docker Compose**                                                                     |                                                       **Docker Swarm**                             |
+|----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| A tool for defining and running multi-container applications on a single machine.      | A container orchestration tool for managing and scaling applications across a cluster of machines. |
+| Used for **development** and **testing** environments.                                 | Used for **production** environments requiring **scalability** and **high availability**.          |
+| Deploys containers on a **single host**.                                               | Deploys and manages containers across **multiple nodes (hosts)**.                                  |
+| Uses `docker-compose.yml` to define services, networks, and volumes.                   | Uses `docker-compose.yml` (with `docker stack deploy`) for service deployment.                     |
+| **No** — it doesn’t manage multiple machines or handle scaling.                        | **Yes** — provides load balancing, scaling, and failover capabilities.                             |
+| Manual scaling by changing the configuration file.                                     | Automatic scaling with commands like `docker service scale`.                                       |
+| **No built-in support**.                                                               | **Built-in support** for load balancing across services.                                           |
+| **Not supported**.                                                                     | **Supported** through replication and failover mechanisms.                                         |
+| Running apps locally (e.g., dev environment with a web app and DB).                    | Deploying large-scale apps (e.g., e-commerce site) across servers.                                 |
 
+---
 
+# 30. How to Check Resource Usage of a Running Docker Container?
+You can check the resource usage of a running Docker container using the following commands:
+1. **Using `docker stats` (Real-time Monitoring):** - It shows  Real-time CPU usage, memory usage, network I/O, and disk I/O.  
+```bash
+docker stats <container_id_or_name>
 
-
+docker stats my_container
+```
+- **when need to see for all containers details:-**  `docker stats`
+  
+2️. **Using `docker inspect` (Detailed Info):-** It shows detailed JSON output with container stats, network info, and more.  
+  - `docker inspect <container_id_or_name>`
+  - **Filter specific details:** `docker inspect --format='{{json .State}}' <container_id_or_name>`
+  
+3. **Using `docker top` (Process-Level Info):**  List of running processes inside the container (like `ps` in Linux).
+`docker top <container_id_or_name>`
+4️ **Checking Resource Limits (CPU & Memory:-** CPU and memory limits set for the container.
+```bash
+docker inspect --format='{{.HostConfig.NanoCpus}}' <container_id_or_name>
+docker inspect --format='{{.HostConfig.Memory}}' <container_id_or_name>
+```
+---
 
 
 
