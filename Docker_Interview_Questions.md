@@ -317,25 +317,24 @@ Your answer is mostly on point, but it could use a little more clarity and addit
 ---
 
 # 15. what are the step you take the to secure the conatiners
-### **Steps to Secure Containers**
-To secure containers, I would take the following steps:
+1. **Use Minimal or Distroless Images**  Start with minimal base images or distroless images in multi-stage builds to reduce the attack surface by minimizing unnecessary packages.
 
-1. **Use Minimal or Distroless Images**  
-   Start with minimal base images or distroless images in multi-stage builds to reduce the attack surface by minimizing unnecessary packages.
+2. **Proper Networking Configuration**   Ensure proper container networking. Configure custom bridge networks or isolated networks to prevent unnecessary container communication and potential security breaches.
 
-2. **Proper Networking Configuration**  
-   Ensure proper container networking. Configure custom bridge networks or isolated networks to prevent unnecessary container communication and potential security breaches.
-
-3. **Image Scanning**  
-   Use security scanning tools like **Docker Scan**, **Trivy**, or third-party utilities (e.g., **Aqua Security**) to check container images for vulnerabilities and security risks.
-
+3. **Image Scanning**   Use security scanning tools like **Docker Scan**, **Trivy**, or third-party utilities (e.g., **Aqua Security**) to check container images for vulnerabilities and security risks.
 ---
-
+**(OR)**
+1. Always use **small, minimal base images** (like Alpine) to reduce the attack surface. The fewer components there are, the fewer potential vulnerabilities you have.
+2. **Avoid Running as Root (Use Non-Root User)**:- Never run your container as the **root** user. Instead, create a non-root user and run the container with that user to limit privileges.
+3. **Use Signed Images (Docker Content Trust)**:- Enable **Docker Content Trust (DCT)** to ensure you are using **signed images**. This helps verify the authenticity and integrity of images.
+4. Regularly scan your Docker images for **security vulnerabilities** using tools like **Docker Scan**.
+---
+---
 # 16. What are Bind Mounts in Docker?
+
 - Bind Mounts in Docker allow you to mount a file or directory from the host system into a container. Unlike volumes, which are managed by Docker, bind mounts directly map a file or directory on the host to a location inside the container.
 
 - This means that changes made to the file or directory in the container will reflect directly on the host system and vice versa. Bind mounts are typically used when you need to persist data or share files between the host and containers.
-
 
 # Volumes vs Bind Mounts in Docker
  
@@ -353,7 +352,6 @@ To secure containers, I would take the following steps:
 - **Docker Compose** is a tool used for defining and running multi-container Docker applications. With Docker Compose, you can define all the services (containers) your application needs in a single YAML file, typically named `docker-compose.yml`.
 
 - Using a single command (`docker-compose up`), Docker Compose allows you to start, stop, and manage multiple containers at once, making it easy to handle complex applications that require several services, such as databases, web servers, and caches.
-
 ---
 
 # 18 how do you persist data in docker cotainers?
@@ -372,8 +370,7 @@ To persist data in Docker, I would use **Docker Volumes**,**Bind Mounts**, or **
    -  `docker run --mount type=tmpfs,destination=/data my_image`
    -  tmpfs mounts are stored in memory and are used for non-persistent, temporary data that does not need to be stored after the container stops.
 
-### **Summary:**
-- **Volumes** are the preferred method for persistence, **Bind Mounts** for direct host access, and **tmpfs** for temporary data stored in memory
+**Summary:**-  **Volumes** are the preferred method for persistence, **Bind Mounts** for direct host access, and **tmpfs** for temporary data stored in memory
 ---
 
 # 19. How do you troubleshoot a failing docker container?
@@ -454,10 +451,7 @@ To update a running Docker container without downtime, you can use strategies li
 ---
 
 # 25. How do you Secure a Docker Container?
-1. Always use **small, minimal base images** (like Alpine) to reduce the attack surface. The fewer components there are, the fewer potential vulnerabilities you have.
-2. **Avoid Running as Root (Use Non-Root User)**:- Never run your container as the **root** user. Instead, create a non-root user and run the container with that user to limit privileges.
-3. **Use Signed Images (Docker Content Trust)**:- Enable **Docker Content Trust (DCT)** to ensure you are using **signed images**. This helps verify the authenticity and integrity of images.
-4. Regularly scan your Docker images for **security vulnerabilities** using tools like **Docker Scan**.
+
 ---   
 # 26. How to Run a Docker Container in the Background?
 To run a Docker container in the background, you can use the **-d (detached) flag** with the docker run command. This will start the container in detached mode, meaning it runs in the background without blocking your terminal.
