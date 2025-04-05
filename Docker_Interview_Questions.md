@@ -422,7 +422,7 @@ To connect two Docker containers, the most common approach is to use **Docker ne
 3. **Data Loss**:- Any data inside the container (not in a volume) will be lost.
 4. **The Image Remains**:- The Docker image used to create the container is not affected and remains intact.
 5. To remove a running container, you can use:-  `docker rm -f <container_name_or_id>`
- - This command forces the container to stop and then removes it.
+      - This command forces the container to stop and then removes it.
 ---
 # 24. How to Update a Running Docker Container Without Downtime?
 To update a running Docker container without downtime, you can use strategies like **rolling updates** or **Blue-Green deployment**.
@@ -439,8 +439,38 @@ To update a running Docker container without downtime, you can use strategies li
 - **Rolling Updates** (Docker Swarm or Compose) allow containers to be updated one by one with minimal or no downtime.
 - **Blue-Green Deployment** is another strategy that avoids downtime by switching between two environments.
 ---
+# 25. How do you Secure a Docker Container?
+1. Always use **small, minimal base images** (like Alpine) to reduce the attack surface. The fewer components there are, the fewer potential vulnerabilities you have.
+2. **Avoid Running as Root (Use Non-Root User)**:- Never run your container as the **root** user. Instead, create a non-root user and run the container with that user to limit privileges.
+3. **Use Signed Images (Docker Content Trust)**:- Enable **Docker Content Trust (DCT)** to ensure you are using **signed images**. This helps verify the authenticity and integrity of images.
+4. Regularly scan your Docker images for **security vulnerabilities** using tools like **Docker Scan**.
+---   
+# 26. How to Run a Docker Container in the Background?
+To run a Docker container in the background, you can use the **-d (detached) flag** with the docker run command. This will start the container in detached mode, meaning it runs in the background without blocking your terminal.
+```bash
+docker run -d <image_name>
 
-
+docker run -d --name my_container <myimage>
+(or)
+docker run -d --name my_container nginx
+```
+---
+# 27. what is the difference between Docker Image and Docker Container:
+| **Aspect**                |             **Docker Image**                                               |            **Docker Container**                                                 |
+|---------------------------|----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| **Definition**            | A Docker image is a **read-only template** used to create containers.      | A Docker container is a **running instance** of a Docker image.                 |
+| **State**                 | **Immutable (Read-only)**                                                  | **Mutable (Writable)**                                                          |
+| **Purpose**               | Used to package and distribute an application along with its dependencies. | Runs the application based on the image and allows changes during runtime.      |
+| **Lifecycle**             | Exists as long as it’s stored in a registry or locally.                    | Exists only while it’s running. It can be started, stopped, and removed.        |
+| **Storage**               | Stored in Docker repositories (e.g., Docker Hub).                          | Stored on the host machine, created from an image.                              |
+| **Modification**          | Cannot be changed once created.                                            | Can be modified while running (e.g., writing files).                            |
+| **Example**               | `nginx`, `ubuntu`, `node` (as images in a registry).                       | A running instance of `nginx` or `ubuntu` container.                            |
+| **Command to Create**     | `docker pull <image_name>`                                                 | `docker run -d <image_name>`                                                    |
+---
+### **Summary**:
+- **Docker Image**: A **static template** for creating containers.
+- **Docker Container**: A **dynamic, running instance** of an image.
+---
 
 
 
