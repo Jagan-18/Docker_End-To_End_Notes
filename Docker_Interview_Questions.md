@@ -368,7 +368,35 @@ To persist data in Docker, I would use **Docker Volumes**,**Bind Mounts**, or **
 ### **Summary:**
 - **Volumes** are the preferred method for persistence, **Bind Mounts** for direct host access, and **tmpfs** for temporary data stored in memory
 ---
+# 19. How do you troubleshoot a failing docker container?
+When a Docker container fails, there are several steps you can take to troubleshoot and identify the issue.
+1. **Check Container Logs**:  Look at the logs for error messages.  
+   ```bash
+   docker logs <container_id>
+   ```
+2. **Inspect the Container's Status**: Check if the container is running or stopped.  
+   ```bash
+   docker ps -a
+   ```
+3. **Inspect the Container's Configuration**: Get detailed information about the container's configuration.  
+   ```bash
+   docker inspect <container_id>
+   ```
+4. **Check Running Processes**: View the processes running inside the container.  
+   ```bash
+   docker top <container_id>
+   ```
+5. **Run in Interactive Mode**: Start the container interactively to troubleshoot manually.  
+   ```bash
+   docker run -it <image_name> /bin/sh
+   ```
+6. **Check Resource Utilization**: Monitor the resource usage (CPU, memory) of running containers.  
+   ```bash
+   docker stats
+   ```
+7. **Verify Dockerfile/Configuration**: Review the Dockerfile or container configurations for missing dependencies or errors.
 
+---
 
 
 
