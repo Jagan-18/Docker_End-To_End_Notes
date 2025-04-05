@@ -540,15 +540,66 @@ docker stats my_container
 2️. **Using `docker inspect` (Detailed Info):-** It shows detailed JSON output with container stats, network info, and more.  
   - `docker inspect <container_id_or_name>`
   - **Filter specific details:** `docker inspect --format='{{json .State}}' <container_id_or_name>`
-  
+    
 3. **Using `docker top` (Process-Level Info):**  List of running processes inside the container (like `ps` in Linux).
-`docker top <container_id_or_name>`
+  `docker top <container_id_or_name>`
+
 4️ **Checking Resource Limits (CPU & Memory:-** CPU and memory limits set for the container.
 ```bash
 docker inspect --format='{{.HostConfig.NanoCpus}}' <container_id_or_name>
 docker inspect --format='{{.HostConfig.Memory}}' <container_id_or_name>
 ```
 ---
+
+# 31. what happen when you run docker stop vs docker kill?
+1. **docker stop:** - Gracefully stops the container.
+2. **dockerkill** - Immediately stops the container without cleanup.
+   
+---
+# 32 How do you remove all stopped containers in one command
+- docker rm $(docker ps -aq)
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
