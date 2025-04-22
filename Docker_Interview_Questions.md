@@ -560,6 +560,26 @@ docker inspect --format='{{.HostConfig.Memory}}' <container_id_or_name>
 - docker rm $(docker ps -aq)
 ---
 
+# 33. what is different B/w Docker Compose and Kubernetes (K8s)?
+
+| Feature / Aspect                | 🐳 **Docker Compose**                     | ☸️ **Kubernetes (K8s)**                            |
+|---------------------------------|-------------------------------------------|-----------------------------------------------------|
+| **Primary Use Case**            | Local development, small projects         | Production deployments, large-scale systems         |
+| **Complexity**                  | Low (simple YAML)                         | High (multi-file YAML + cluster setup)              |
+| **Scalability**                 | Limited                                   | Highly scalable                                     |
+| **Setup & Deployment**          | Quick and easy                            | Requires cluster setup (Minikube, GKE, etc.)        |
+| **Self-Healing**                | No (manual or restart policy)             | Yes (automatic pod restart, health checks)          |
+| **Load Balancing**              | Basic (via port mapping)                  | Built-in (via Services)                             |
+| **Rolling Updates / Rollbacks** | Not supported                             | Yes (via Deployments)                               |
+| **Service Discovery**           | Basic (container names)                   | Advanced (DNS-based, dynamic)                       |
+| **Secrets Management**          | Limited (env files, not encrypted)        | Built-in and secure                                 |
+| **Volume & Network Management** | Simple (defined in YAML)                  | More robust and flexible                            |
+| **Ideal For**                   | Developers, testers, simple apps          | DevOps, SREs, production-grade applications         |
+| **Learning Curve**              | Easy to learn                             | Steep learning curve                                |
+| **Runs On**                     | Docker engine                             | Kubernetes cluster (local or cloud)                 |
+ 
+---
+
 
 
 
