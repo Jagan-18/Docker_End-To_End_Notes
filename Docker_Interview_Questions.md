@@ -579,6 +579,22 @@ docker inspect --format='{{.HostConfig.Memory}}' <container_id_or_name>
 | **Runs On**                     | Docker engine                             | Kubernetes cluster (local or cloud)                 |
  
 ---
+# 34. Jenkins is failing to push a Docker image to the registry. How do you troubleshoot?**
+If Jenkins fails to push a Docker image, I follow these steps:
+1. **Check credentials and access permissions**
+   – I make sure Jenkins has the correct username and password or token to log in to the Docker registry.
+2. **Verify Docker daemon is running**
+   – I ensure that Docker is installed and running properly on the Jenkins agent or server.
+3. **Check network connectivity**
+   – I test if Jenkins can reach the registry, especially if it’s a private or remote one.
+4. **Validate the image tag and registry URL**
+   – I confirm the image is tagged correctly with the full registry path (e.g. `registry.example.com/myapp:latest`).
+5. **Inspect Jenkins logs and pipeline script**
+   – I look at the console output to find the exact error, and I also check the pipeline script for mistakes in Docker commands.
+
+---
+
+
 
 
 
